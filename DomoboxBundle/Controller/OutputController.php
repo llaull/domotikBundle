@@ -27,7 +27,6 @@ class OutputController extends Controller
     {
         $now = new \DateTime();
         $currentDate = $now->format('d-m-Y');
-        $currentDateFr = $now->format('d-m-Y');
         $currentHour = $now->format('G:i:s');
 
         $return = array("date" => $currentDate, "hour" => $currentHour);

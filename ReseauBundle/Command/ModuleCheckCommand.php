@@ -35,13 +35,13 @@ class ModuleCheckCommand extends ContainerAwareCommand
 
         $output->writeln("_______________                                       back");
         // check les modules revenu depuis 5 min
-        $this->ModuleBackCheck($em, $output);
+        $this->moduleBackCheck($em, $output);
         $output->writeln("_______________                                       lost");
         //check les modules qui n'ont rien envoyer depuis 10 min
-        $this->ModuleLostCheck($em, $output);
+        $this->moduleLostCheck($em, $output);
     }
 
-    protected function ModuleLostCheck($em, $output)
+    protected function moduleLostCheck($em, $output)
     {
 
         //charge tout les modules
@@ -77,7 +77,6 @@ class ModuleCheckCommand extends ContainerAwareCommand
                         $notif->setModule($value);
                         $notif->setStatus("lost");
                         $em->persist($notif);
-                        $em->flush();
 
                         $output->writeln('new lost');
                         //il faut envoyer le mail ici
@@ -87,10 +86,11 @@ class ModuleCheckCommand extends ContainerAwareCommand
                 } // fin if 10 min
             } // fin if
         } //fin boucle des modules
+        $em->flush();
 
     }
 
-    protected function ModuleBackCheck($em,$output)
+    protected function moduleBackCheck($em,$output)
     {
 
         //charge tout les modules
@@ -125,7 +125,6 @@ class ModuleCheckCommand extends ContainerAwareCommand
                         $notif->setModule($value);
                         $notif->setStatus("back");
                         $em->persist($notif);
-                        $em->flush();
 
                         $output->writeln('new back');
                         //il faut envoyer le mail ici
@@ -136,6 +135,7 @@ class ModuleCheckCommand extends ContainerAwareCommand
               //  } // fin if 10 min
             } // fin if
         } //fin boucle des modules
+        $em->flush();
 
     }
 

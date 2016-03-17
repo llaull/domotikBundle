@@ -1,21 +1,43 @@
-<li><a class="{{ "Domotique"|menuActive(app.request.attributes.get('_controller')) }} submenu" href="#"
-       title="Carnet de voyages" data-id="domotique-sub"><i
-                class="entypo-network"></i><span> Domotique</span></a>
-    <ul id="domotique-sub">
-        <li><a href="{{ path('admin_sensor_log') }}" title="Les Logs"><i
-                        class="entypo-database"></i><span> les Logs</span></a>
+
+<li class="nav-item start ">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="icon-home"></i>
+        <span class="title">Domotique</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+
+        <li class="nav-item start ">
+            <a href="{{ path('admin_sensor_log') }}" class="nav-link ">
+                <i class="entypo entypo-database"></i>
+                <span class="title"> les Logs</span>
+            </a>
         </li>
-        <li><a href="{{ path('admin_domotique_modules') }}" title="Les modules"><i
-                        class="fa fa-puzzle-piece"></i><span> les modules</span></a>
+        <li class="nav-item start ">
+            <a href="{{ path('admin_domotique_modules') }}" class="nav-link ">
+                <i class="fa fa-puzzle-piece"></i>
+                <span class="title"> les modules</span>
+            </a>
         </li>
-        <li><a href="{{ path('admin_module_emplacement') }}" title="Les Emplacements"><i
-                        class="entypo-compass"></i><span> les Emplacements</span></a>
+        <li class="nav-item start ">
+            <a href="{{ path('admin_module_emplacement') }}" class="nav-link ">
+                <i class="entypo-compass"></i>
+                <span class="title"> les Emplacements</span>
+            </a>
         </li>
-        <li><a href="{{ path('admin_sensor_type') }}" title="Les Types"><i
-                        class="entypo-air"></i><span> les Types</span></a>
+        <li class="nav-item start ">
+            <a href="{{ path('admin_sensor_type') }}" class="nav-link ">
+                <i class="entypo-air"></i>
+                <span class="title"> les Types</span>
+            </a>
         </li>
-        <li><a href="{{ path('admin_sensor_unit') }}" title="Les Unit"><i
-                        class="entypo-language"></i><span> les Units</span></a>
+        <li class="nav-item start ">
+            <a href="{{ path('admin_sensor_unit') }}" class="nav-link ">
+                <i class="entypo-language"></i>
+                <span class="title"> les Unit</span>
+            </a>
         </li>
+
+
     </ul>
 </li>

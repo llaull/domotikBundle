@@ -1,149 +1,22 @@
-{% set pageTitle = 'historiques modules' %}
-{% set pageTitleB = 'modules' %}
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
 
-{% extends "CommunUserBundle:Admin:MainWrapper.html.twig" %}
-{% block title %}{{ pageTitle }}{% endblock title %}
-{% block h1_header %}{{ pageTitle }}{% endblock h1_header %}
-{% block h1_header_s %} {{ pageTitleB }}{% endblock h1_header_s %}
+{% set title_page = 'historiques modules' %}
+{% set path_entity_new = 'd' %}
 
-{% block dynamic_body %}
-
-<div class="col-md-12 bootstrap-grid">
-
-    <div class="powerwidget cold-grey" id="datatable-filter-column" data-widget-editbutton="false"
-         data-widget-deletebutton="false">
-        <header>
-            <h2>{{ pageTitle }}
-                <small> logs brut</small>
-            </h2>
-        </header>
-        <div class="inner-spacer">
-            <div class="panel-body">
-                {{ render_flash_alerts() }}
-                <div class="btn-group">
-                    {#<a class="btn btn-success btn-sm" role="button"#}
-                    {#href="{{ path('admin_domotique_module_emplacement_new') }}">New</a>#}
-                    {#<a class="btn btn-danger btn-sm" role="button"#}
-                       {#href="{{ path('admin_domotique_module_logs_truncate') }}">vider le log</a>#}
-                    {#<a class="btn btn-warning btn-sm" role="button"#}
-                       {#href="{{ path('admin_domotique_module_emplacement_new') }}">supprimer les valeur à 0</a>#}
-                </div>
-            </div>
-            <table class="display table table-striped table-hover" id="table-0">
-                <thead>
-                <tr>
-                    <th>Temps</th>
-                    <th>Sondevaleur</th>
-                    {#<<th>Sondeid</th>"#}
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for entity in entities %}
-                    <tr>
-                        <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ entity.sonsorValue }}</td>
-                        {#<<td>{{ entity.sensorId }}</td>"#}
-                        <td>
-                            <div class="btn-group">
-                                {#<a class="btn btn-danger btn-sm modal-delete" role="button"#}
-                                   {#data-href="{{ path('admin_domotique_module_logs_delete', { 'id': entity.id }) }}"#}
-                                   {#href="{{ path('admin_domotique_module_logs_delete', { 'id': entity.id }) }}">Delete</a>#}
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- New widget -->
-    <div class="powerwidget cold-grey" id="morrisbasic" data-widget-editbutton="false" data-widget-deletebutton="false">
-        <header>
-            <h2>Temperature
-                <small>du salon</small>
-            </h2>
-        </header>
-        <div class="inner-spacer">
-
-            <div class="col-sm-12 text-center">
-                <label class="label label-success">Salon</label>
-
-                <div id="line-chart"></div>
-            </div>
-
-        </div>
-    </div>
-    <!-- /New widget -->
-
-
-    {% endblock dynamic_body %}
-
-    {% block dynamic_js %}
-    {% javascripts
-    '@CommunUserBundle/Resources/public/js/morris/morris.min.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-    {% javascripts
-    '@CommunUserBundle/Resources/public/js/raphael/raphael-min.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-
-    <script>
-
-        $(document).ready(function () {
-
-            $.getJSON("{{ path('domotique_log_moyen', { 'unit': 2, 'spot': 1 }) }}", function (json) {
-
-
-                dataMax = [];
-                dataMin = [];
-                $(json).each(function (index, record) {
-                    var max = record.maxi;
-                    var min = record.mini;
-
-                    dataMax.push(max);
-                    dataMin.push(min);
-                });
-
-
-                var dataMaxX = parseInt(Math.max.apply(Math, dataMax)) + 1;
-                var dataMinX = parseInt(Math.min.apply(Math, dataMin)).toFixed() - 1;
-
-                config = {
-                    data: json,
-//                        hoverCallback: function(index, options, content) {
-//                            var data = options.data[index];
-//                            $(".morris-hover").html('<div>Custom label: ' + data.label + '</div>');
-//                        },
-                    xkey: 'l',
-                    xLabels: 'hour',
-
-                    ymax: dataMaxX,
-                    ymin: dataMinX,
-                    ykeys: ['moyenne', 'maxi', 'mini'],
-                    labels: ['moyenne', 'maxi', 'mini'],
-                    fillOpacity: 0.6,
-                    postUnits: ' °C',
-                    stacked: true,
-                    hideHover: 'auto',
-                    behaveLikeLine: true,
-                    resize: true,
-                    pointFillColors: ['#ffffff'],
-                    pointStrokeColors: ['black'],
-                    lineColors: ['gray', 'red', 'white'],
-                    yLabelFormat: function (y) {
-                        return y.toFixed(2) + ' °C';
-                    }
-                };
-
-                config.element = 'line-chart';
-                Morris.Line(config);
-            });
-
-        });
-    </script>
-{% endblock dynamic_js %}
+{% block content_txt %}
+<tr>
+    <th> Temps</th>
+    <th> Sondevaleur</th>
+</tr>
+</thead>
+<tbody>
+{% for entity in entities %}
+    <tr class="odd gradeX">
+        <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td>{{ entity.sonsorValue }}<</td>
+        <td>
+            <span class="label label-sm label-warning"> Suspended </span>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock content_txt %}

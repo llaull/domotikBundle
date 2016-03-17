@@ -1,54 +1,31 @@
-{% extends "CommunUserBundle:Admin:MainWrapper.html.twig" %}
-{% block title %}{% endblock title %}
-{% block h1_header %}{% endblock h1_header %}
-{% block h1_header_s %}-{% endblock h1_header_s %}
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
 
-{% block dynamic_body %}
+{% set title_page = 'type de sonde' %}
+{% set path_entity_new = 'd' %}
+{#{{ path('admin_sensor_type_new') }}#}
 
-<div class="col-md-12 bootstrap-grid">
-
-    <div class="powerwidget" id="datatable-basic-init" data-widget-editbutton="false">
-        <header>
-            {#<h2>tableaux</h2>#}
-            {#<h2>plup#}
-            {#<small>-</small>#}
-            {#</h2>#}
-        </header>
-        <div class="inner-spacer">
-
-            <ul class="btn-group">
-                <a class="btn btn-success btn-sm" role="button" href="{{ path('admin_sensor_type_new') }}">New</a>
+{% block content_txt %}
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for entity in entities %}
+    <tr class="odd gradeX">
+        <td><a href="{{ path('admin_sensor_type_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        <td>{{ entity.name }}</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="{{ path('admin_sensor_type_show', { 'id': entity.id }) }}">show</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_sensor_type_edit', { 'id': entity.id }) }}">edit</a>
+                </li>
             </ul>
-
-            <table class="table table-striped table-hover" id="table-1">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('admin_sensor_type_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('admin_sensor_type_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_sensor_type_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-{% endblock dynamic_body %}
+        </td>
+    </tr>
+{% endfor %}
+{% endblock content_txt %}
