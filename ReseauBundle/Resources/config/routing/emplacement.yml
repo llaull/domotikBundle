@@ -1,0 +1,30 @@
+admin_module_emplacement:
+    path:     /
+    defaults: { _controller: "DomotiqueReseauBundle:Emplacement:index" }
+
+admin_module_emplacement_show:
+    path:     /{id}/show
+    defaults: { _controller: "DomotiqueReseauBundle:Emplacement:show" }
+
+admin_module_emplacement_new:
+    path:     /new
+    defaults: { _controller: "DomotiqueReseauBundle:Emplacement:new" }
+
+admin_module_emplacement_create:
+    path:     /create
+    defaults: { _controller: "DomotiqueReseauBundle:Emplacement:create" }
+    methods:  POST
+
+admin_module_emplacement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DomotiqueReseauBundle:Emplacement:edit" }
+
+admin_module_emplacement_update:
+    path:     /{id}/update
+    defaults: { _controller: "DomotiqueReseauBundle:Emplacement:update" }
+    methods:  [POST, PUT]
+
+admin_module_emplacement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DomotiqueReseauBundle:Emplacement:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,58 @@
+{% extends "CommunUserBundle:Admin:MainWrapper.html.twig" %}
+{% block title %}{% endblock title %}
+{% block h1_header %}{% endblock h1_header %}
+{% block h1_header_s %}-{% endblock h1_header_s %}
+
+{% block dynamic_body %}
+
+<div class="col-md-12 bootstrap-grid">
+
+    <div class="powerwidget" id="datatable-basic-init" data-widget-editbutton="false">
+        <header>
+            {#<h2>tableaux</h2>#}
+            {#<h2>plup#}
+            {#<small>-</small>#}
+            {#</h2>#}
+        </header>
+        <div class="inner-spacer">
+
+            <table class="table table-striped table-hover" id="table-1">
+        <thead>
+            <tr>
+                <th>Created</th>
+                <th>Modified</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Adressmac</th>
+                <th>Adressipv4</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+                <td>{% if entity.modified %}{{ entity.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.adressMac }}</td>
+                <td>{{ entity.adressIpv4 }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_domotique_modules_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_domotique_modules_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock dynamic_body %}

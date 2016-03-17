@@ -1,0 +1,26 @@
+# venant des modules
+domotiquebundle_domobox_module_flux_json:
+    path:     /module/esp8266/post/json/
+    defaults: { _controller: "DomotiqueDomoboxBundle:Input:addJson" }
+    methods:  [POST]
+
+
+domotiquebundle_domobox_module_flux_fake:
+    path:     /module/esp8266/post/fake/
+    defaults: { _controller: "DomotiqueDomoboxBundle:Input:addFuxFake" }
+
+#retourne les valeurs de toute les sondes
+domotique_log_sonde:
+    path: /log/value
+    defaults: { _controller: "DomotiqueDomoboxBundle:Output:getCurrentValue" }
+
+#donne la moyenne selont l'unitée et le lieu
+domotique_log_moyen:
+    path: /log/moyenne/{unit}/{spot}/
+    defaults: { _controller: "DomotiqueDomoboxBundle:Output:logMoyenne" }
+    methods:  [GET]
+
+#retourne l'heure local
+domobox_get_hour:
+    path: /flux/hour
+    defaults: { _controller: "DomotiqueDomoboxBundle:Output:getCurrentDate" }

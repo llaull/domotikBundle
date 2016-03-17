@@ -1,0 +1,30 @@
+admin_sensor_log:
+    path:     /
+    defaults: { _controller: "DomotiqueReseauBundle:Log:index" }
+
+admin_sensor_log_show:
+    path:     /{id}/show
+    defaults: { _controller: "DomotiqueReseauBundle:Log:show" }
+
+admin_sensor_log_new:
+    path:     /new
+    defaults: { _controller: "DomotiqueReseauBundle:Log:new" }
+
+admin_sensor_log_create:
+    path:     /create
+    defaults: { _controller: "DomotiqueReseauBundle:Log:create" }
+    methods:  POST
+
+admin_sensor_log_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DomotiqueReseauBundle:Log:edit" }
+
+admin_sensor_log_update:
+    path:     /{id}/update
+    defaults: { _controller: "DomotiqueReseauBundle:Log:update" }
+    methods:  [POST, PUT]
+
+admin_sensor_log_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DomotiqueReseauBundle:Log:delete" }
+    methods:  [POST, DELETE]
