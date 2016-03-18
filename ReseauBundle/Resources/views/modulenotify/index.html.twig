@@ -17,7 +17,7 @@
     <tr class="odd gradeX">
         <td>{{ moduleNotify.id }}</td>
         <td>
-            {{ moduleNotify.created }}
+            {{ moduleNotify.created|date('Y-m-d H:i:s') }}
         </td>
         <td>{{ moduleNotify.status }}</td>
         <td>
