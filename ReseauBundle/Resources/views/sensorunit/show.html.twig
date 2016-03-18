@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>SensorUnit</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sensorUnit.id }}</td>
+            </tr>
+            <tr>
+                <th>Symbole</th>
+                <td>{{ sensorUnit.symbole }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sensorUnit.name }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ sensorUnit.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_domotique_sensor_unit_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_domotique_sensor_unit_edit', { 'id': sensorUnit.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,4 +1,3 @@
-
 <li class="nav-item  start active open">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-home"></i>
@@ -8,19 +7,25 @@
     <ul class="sub-menu">
 
         <li class="nav-item start  start active open">
-            <a href="{{ path('admin_domotique_sensor_log_index') }}" class="nav-link ">
+            <a href="{{ path('admin_domotique_log_index') }}" class="nav-link ">
                 <i class="entypo entypo-database"></i>
-                <span class="title"> les Logs</span>
+                <span class="title"> les Logs des sondes</span>
             </a>
         </li>
         <li class="nav-item start ">
-            <a href="{{ path('admin_domotique_modules') }}" class="nav-link ">
+            <a href="{{ path('admin_domotique_module_notify_index') }}" class="nav-link ">
+                <i class="entypo entypo-database"></i>
+                <span class="title"> les Logs des modules</span>
+            </a>
+        </li>
+        <li class="nav-item start ">
+            <a href="{{ path('admin_domotique_module_index') }}" class="nav-link ">
                 <i class="fa fa-puzzle-piece"></i>
                 <span class="title"> les modules</span>
             </a>
         </li>
         <li class="nav-item start ">
-            <a href="{{ path('admin_module_emplacement') }}" class="nav-link ">
+            <a href="{{ path('admin_domotique_emplacement_index') }}" class="nav-link ">
                 <i class="entypo-compass"></i>
                 <span class="title"> les Emplacements</span>
             </a>
@@ -32,7 +37,7 @@
             </a>
         </li>
         <li class="nav-item start ">
-            <a href="{{ path('admin_sensor_unit') }}" class="nav-link ">
+            <a href="{{ path('admin_domotique_sensor_unit_index') }}" class="nav-link ">
                 <i class="entypo-language"></i>
                 <span class="title"> les Unit</span>
             </a>

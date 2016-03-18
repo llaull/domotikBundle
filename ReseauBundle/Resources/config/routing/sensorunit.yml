@@ -1,30 +1,24 @@
-admin_sensor_unit:
+admin_domotique_sensor_unit_index:
     path:     /
     defaults: { _controller: "DomotiqueReseauBundle:SensorUnit:index" }
+    methods:  GET
 
-admin_sensor_unit_show:
+admin_domotique_sensor_unit_show:
     path:     /{id}/show
     defaults: { _controller: "DomotiqueReseauBundle:SensorUnit:show" }
+    methods:  GET
 
-admin_sensor_unit_new:
+admin_domotique_sensor_unit_new:
     path:     /new
     defaults: { _controller: "DomotiqueReseauBundle:SensorUnit:new" }
+    methods:  [GET, POST]
 
-admin_sensor_unit_create:
-    path:     /create
-    defaults: { _controller: "DomotiqueReseauBundle:SensorUnit:create" }
-    methods:  POST
-
-admin_sensor_unit_edit:
+admin_domotique_sensor_unit_edit:
     path:     /{id}/edit
     defaults: { _controller: "DomotiqueReseauBundle:SensorUnit:edit" }
+    methods:  [GET, POST]
 
-admin_sensor_unit_update:
-    path:     /{id}/update
-    defaults: { _controller: "DomotiqueReseauBundle:SensorUnit:update" }
-    methods:  [POST, PUT]
-
-admin_sensor_unit_delete:
+admin_domotique_sensor_unit_delete:
     path:     /{id}/delete
     defaults: { _controller: "DomotiqueReseauBundle:SensorUnit:delete" }
-    methods:  [POST, DELETE]
+    methods:  DELETE

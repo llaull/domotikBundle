@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Module</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Created</th>
+                <td>{% if module.created %}{{ module.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modified</th>
+                <td>{% if module.modified %}{{ module.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ module.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ module.name }}</td>
+            </tr>
+            <tr>
+                <th>Adressmac</th>
+                <td>{{ module.adressMac }}</td>
+            </tr>
+            <tr>
+                <th>Adressipv4</th>
+                <td>{{ module.adressIpv4 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_domotique_module_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_domotique_module_edit', { 'id': module.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

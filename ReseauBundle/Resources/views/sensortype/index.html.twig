@@ -1,0 +1,31 @@
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
+
+{% set title_page = 'SensorType list' %}
+{% set path_entity_new = 'admin_domotique_sensor_type_new' %}
+{% set table_size = 'col-md-12' %}{# col-md-6 col-sm-12#}
+
+{% block content_txt %}
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for sensorType in entities %}
+    <tr class="odd gradeX">
+        <td>{{ sensorType.id }}</td>
+        <td>{{ sensorType.name }}</td>
+        <td>
+            <div class="btn-toolbar">
+                <div class="btn-group btn-group-xs btn-group-solid">
+                    <a class="btn red"
+                       href="{{ path('admin_domotique_sensor_type_show', { 'id': sensorType.id }) }}">{{ 'show'|trans }}</a>
+                    <a class="btn green"
+                       href="{{ path('admin_domotique_sensor_type_edit', { 'id': sensorType.id }) }}">{{ 'edit'|trans }}</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock content_txt %}

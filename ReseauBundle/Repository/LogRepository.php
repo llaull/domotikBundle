@@ -34,8 +34,8 @@ class LogRepository extends EntityRepository
         INNER JOIN domotique__module AS info on info.id = logs.module_id
         WHERE logs.created > DATE_SUB(NOW(), INTERVAL 24 HOUR)
         AND type.id in (2,3,4)
-        AND unit.id = " . $unit . "
-        AND info.emplacement_id = " . $spot . "
+        AND unit.id = :unit
+        AND info.emplacement_id = :emplacement
         GROUP BY YEAR(logs.created),
                  MONTH(logs.created),
                  DAY(logs.created),
@@ -51,6 +51,9 @@ class LogRepository extends EntityRepository
 
         $connection = $em->getConnection();
         $statement = $connection->prepare($rq);
+        $statement->bindValue("unit", $unit);
+        $statement->bindValue("emplacement", $spot);
+
         $statement->execute();
         $results = $statement->fetchAll();
 

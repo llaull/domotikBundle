@@ -1,0 +1,24 @@
+admin_domotique_module_notify_index:
+    path:     /
+    defaults: { _controller: "DomotiqueReseauBundle:ModuleNotify:index" }
+    methods:  GET
+
+admin_domotique_module_notify_show:
+    path:     /{id}/show
+    defaults: { _controller: "DomotiqueReseauBundle:ModuleNotify:show" }
+    methods:  GET
+
+admin_domotique_module_notify_new:
+    path:     /new
+    defaults: { _controller: "DomotiqueReseauBundle:ModuleNotify:new" }
+    methods:  [GET, POST]
+
+admin_domotique_module_notify_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DomotiqueReseauBundle:ModuleNotify:edit" }
+    methods:  [GET, POST]
+
+admin_domotique_module_notify_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DomotiqueReseauBundle:ModuleNotify:delete" }
+    methods:  DELETE

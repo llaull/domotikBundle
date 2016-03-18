@@ -1,0 +1,39 @@
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
+
+{% set title_page = 'modules' %}
+{% set path_entity_new = 'admin_domotique_module_new' %}
+{% set table_size = 'col-md-12' %}{# col-md-6 col-sm-12#}
+
+{% block content_txt %}
+<tr>
+    <th>Created</th>
+    <th>Modified</th>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Adressmac</th>
+    <th>Adressipv4</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for module in entities %}
+    <tr class="odd gradeX">
+        <td><a href="{{ path('admin_domotique_module_show', { 'id': module.id }) }}">{{ module.created }}</a></td>
+        <td>{% if module.modified %}{{ module.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td>{{ module.id }}</td>
+        <td>{{ module.name }}</td>
+        <td>{{ module.adressMac }}</td>
+        <td>{{ module.adressIpv4 }}</td>
+        <td>
+            <div class="btn-toolbar">
+                <div class="btn-group btn-group-xs btn-group-solid">
+                    <a class="btn red"
+                       href="{{ path('admin_domotique_module_show', { 'id': module.id }) }}">{{ 'show'|trans }}</a>
+                    <a class="btn green"
+                       href="{{ path('admin_domotique_module_edit', { 'id': module.id }) }}">{{ 'edit'|trans }}</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock content_txt %}

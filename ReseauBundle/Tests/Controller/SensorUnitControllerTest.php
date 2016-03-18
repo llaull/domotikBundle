@@ -4,7 +4,7 @@ namespace Domotique\ReseauBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class LogControllerTest extends WebTestCase
+class SensorUnitControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class LogControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/admin/domotique/log/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/domotique/log/");
+        $crawler = $client->request('GET', '/admin/domotique/sensor/unit/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/domotique/sensor/unit/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'domotique_reseaubundle_log[field_name]'  => 'Test',
+            'domotique_reseaubundle_sensorunit[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class LogControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'domotique_reseaubundle_log[field_name]'  => 'Foo',
+            'domotique_reseaubundle_sensorunit[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

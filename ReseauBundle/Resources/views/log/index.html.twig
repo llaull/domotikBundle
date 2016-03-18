@@ -1,0 +1,35 @@
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
+
+{% set title_page = 'lod des sondes' %}
+{% set path_entity_new = 'admin_domotique_log_new' %}
+{% set table_size = 'col-md-12' %}{# col-md-6 col-sm-12#}
+
+{% block content_txt %}
+<tr>
+    <th>Id</th>
+    <th>Sonsorvalue</th>
+    <th>Sensorid</th>
+    <th>Created</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for log in entities %}
+    <tr class="odd gradeX">
+        <td>{{ log.id }}</td>
+        <td>{{ log.sonsorValue }}</td>
+        <td>{{ log.sensorId }}</td>
+        <td>{% if log.created %}{{ log.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td>
+            {#<ul>#}
+                {#<li>#}
+                    {#<a href="{{ path('admin_domotique_log_show', { 'id': log.id }) }}">show</a>#}
+                {#</li>#}
+                {#<li>#}
+                    {#<a href="{{ path('admin_domotique_log_edit', { 'id': log.id }) }}">edit</a>#}
+                {#</li>#}
+            {#</ul>#}
+        </td>
+    </tr>
+{% endfor %}
+{% endblock content_txt %}

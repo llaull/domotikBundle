@@ -1,0 +1,30 @@
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
+
+{% set title_page = 'emplacement des modules' %}
+{% set path_entity_new = 'admin_domotique_emplacement_new' %}
+{% set table_size = 'col-md-12' %}{# col-md-6 col-sm-12#}
+
+{% block content_txt %}
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for entity in entities %}
+    <tr class="odd gradeX">
+        <td>{{ entity.id }}</td>
+        <td>{{ entity.name }}</td>
+        <td>
+            <div class="btn-toolbar">
+                <div class="btn-group btn-group-xs btn-group-solid">
+                    <a class="btn red" href="{{ path('admin_domotique_emplacement_show', { 'id': entity.id }) }}">{{ 'show'|trans }}</a>
+                    <a class="btn green" href="{{ path('admin_domotique_emplacement_edit', { 'id': entity.id }) }}">{{ 'edit'|trans }}</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
+{{ dump() }}
+{% endblock content_txt %}

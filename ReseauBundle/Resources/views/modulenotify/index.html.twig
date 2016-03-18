@@ -1,0 +1,35 @@
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
+
+{% set title_page = 'modules log' %}
+{% set path_entity_new = 'admin_domotique_module_notify_new' %}
+{% set table_size = 'col-md-6 col-sm-12' %}
+
+{% block content_txt %}
+<tr>
+    <th>Id</th>
+    <th>Created</th>
+    <th>Status</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for module in entities %}
+    <tr class="odd gradeX">
+        <td>{{ moduleNotify.id }}</td>
+        <td>
+            <a href="{{ path('admin_domotique_module_notify_show', { 'id': moduleNotify.id }) }}">{{ moduleNotify.created }}</a>
+        </td>
+        <td>{{ moduleNotify.status }}</td>
+        <td>
+            <div class="btn-toolbar">
+                <div class="btn-group btn-group-xs btn-group-solid">
+                    <a class="btn red"
+                       href="{{ path('admin_domotique_module_notify_show', { 'id': moduleNotify.id }) }}">{{ 'show'|trans }}</a>
+                    <a class="btn green"
+                       href="{{ path('admin_domotique_module_notify_edit', { 'id': moduleNotify.id }) }}">{{ 'edit'|trans }}</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock content_txt %}

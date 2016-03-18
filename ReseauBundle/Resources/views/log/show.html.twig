@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Log</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ log.id }}</td>
+            </tr>
+            <tr>
+                <th>Sonsorvalue</th>
+                <td>{{ log.sonsorValue }}</td>
+            </tr>
+            <tr>
+                <th>Sensorid</th>
+                <td>{{ log.sensorId }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if log.created %}{{ log.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_domotique_log_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_domotique_log_edit', { 'id': log.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

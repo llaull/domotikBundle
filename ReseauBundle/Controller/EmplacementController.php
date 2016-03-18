@@ -14,7 +14,6 @@ use Domotique\ReseauBundle\Form\EmplacementType;
  */
 class EmplacementController extends Controller
 {
-
     /**
      * Lists all Emplacement entities.
      *
@@ -23,108 +22,48 @@ class EmplacementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('DomotiqueReseauBundle:Emplacement')->findAll();
+        $emplacements = $em->getRepository('DomotiqueReseauBundle:Emplacement')->findAll();
 
-        return $this->render('DomotiqueReseauBundle:Emplacement:index.html.twig', array(
-            'entities' => $entities,
+        return $this->render('@DomotiqueReseau/emplacement/index.html.twig', array(
+            'entities' => $emplacements,
         ));
     }
+
     /**
      * Creates a new Emplacement entity.
      *
      */
-    public function createAction(Request $request)
-    {
-        $entity = new Emplacement();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('admin_module_emplacement_show', array('id' => $entity->getId())));
-        }
-
-        return $this->render('DomotiqueReseauBundle:Emplacement:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Creates a form to create a Emplacement entity.
-     *
-     * @param Emplacement $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Emplacement $entity)
-    {
-        $form = $this->createForm(new EmplacementType(), $entity, array(
-            'action' => $this->generateUrl('admin_module_emplacement_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
-        return $form;
-    }
-
-    /**
-     * Displays a form to create a new Emplacement entity.
-     *
-     */
     public function newAction(Request $request)
     {
-
-        $post = new Emplacement();
-        $form = $this->createForm('Domotique\ReseauBundle\Form\EmplacementType', $post);
+        $emplacement = new Emplacement();
+        $form = $this->createForm('Domotique\ReseauBundle\Form\EmplacementType', $emplacement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
+            $em->persist($emplacement);
             $em->flush();
 
-            return $this->redirectToRoute('admin_module_emplacement_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('admin_domotique_emplacement_show', array('id' => $emplacement->getId()));
         }
 
-        return $this->render('DomotiqueReseauBundle:Emplacement:new.html.twig', array(
-            'post' => $post,
+        return $this->render('@DomotiqueReseau/emplacement/new.html.twig', array(
+            'emplacement' => $emplacement,
             'form' => $form->createView(),
         ));
-
-
-//        $entity = new Emplacement();
-//        $form   = $this->createCreateForm($entity);
-//
-//        return $this->render('DomotiqueReseauBundle:Emplacement:new.html.twig', array(
-//            'entity' => $entity,
-//            'form'   => $form->createView(),
-//        ));
     }
 
     /**
      * Finds and displays a Emplacement entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Emplacement $emplacement)
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->createDeleteForm($emplacement);
 
-        $entity = $em->getRepository('DomotiqueReseauBundle:Emplacement')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Emplacement entity.');
-        }
-
-//        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('DomotiqueReseauBundle:Emplacement:show.html.twig', array(
-            'entity'      => $entity,
-//            'delete_form' => $deleteForm->createView(),
+        return $this->render('@DomotiqueReseau/emplacement/show.html.twig', array(
+            'emplacement' => $emplacement,
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -132,111 +71,57 @@ class EmplacementController extends Controller
      * Displays a form to edit an existing Emplacement entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, Emplacement $emplacement)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('DomotiqueReseauBundle:Emplacement')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Emplacement entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('DomotiqueReseauBundle:Emplacement:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-    * Creates a form to edit a Emplacement entity.
-    *
-    * @param Emplacement $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Emplacement $entity)
-    {
-        $form = $this->createForm(new EmplacementType(), $entity, array(
-            'action' => $this->generateUrl('admin_module_emplacement_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
-        return $form;
-    }
-    /**
-     * Edits an existing Emplacement entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('DomotiqueReseauBundle:Emplacement')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Emplacement entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($emplacement);
+        $editForm = $this->createForm('Domotique\ReseauBundle\Form\EmplacementType', $emplacement);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($emplacement);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_module_emplacement_edit', array('id' => $id)));
+            return $this->redirectToRoute('admin_domotique_emplacement_edit', array('id' => $emplacement->getId()));
         }
 
-        return $this->render('DomotiqueReseauBundle:Emplacement:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+        return $this->render('@DomotiqueReseau/emplacement/edit.html.twig', array(
+            'emplacement' => $emplacement,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Emplacement entity.
      *
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, Emplacement $emplacement)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($emplacement);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('DomotiqueReseauBundle:Emplacement')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Emplacement entity.');
-            }
-
-            $em->remove($entity);
+            $em->remove($emplacement);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_module_emplacement'));
+        return $this->redirectToRoute('admin_domotique_emplacement_index');
     }
 
     /**
-     * Creates a form to delete a Emplacement entity by id.
+     * Creates a form to delete a Emplacement entity.
      *
-     * @param mixed $id The entity id
+     * @param Emplacement $emplacement The Emplacement entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm(Emplacement $emplacement)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_module_emplacement_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('admin_domotique_emplacement_delete', array('id' => $emplacement->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
