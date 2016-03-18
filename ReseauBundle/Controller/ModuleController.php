@@ -76,15 +76,37 @@ class ModuleController extends Controller
      * Displays a form to create a new Module entity.
      *
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $entity = new Module();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createForm('Domotique\ReseauBundle\Form\ModuleType', $entity);
+        $form->handleRequest($request);
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+//            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+        }
 
         return $this->render('DomotiqueReseauBundle:Module:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
+
+
+
+
+//        $entity = new Module();
+//        $form   = $this->createCreateForm($entity);
+//
+//        return $this->render('DomotiqueReseauBundle:Module:new.html.twig', array(
+//            'entity' => $entity,
+//            'form'   => $form->createView(),
+//        ));
     }
 
     /**

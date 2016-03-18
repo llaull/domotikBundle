@@ -1,58 +1,29 @@
-{% extends "CommunUserBundle:Admin:MainWrapper.html.twig" %}
-{% block title %}{% endblock title %}
-{% block h1_header %}{% endblock h1_header %}
-{% block h1_header_s %}-{% endblock h1_header_s %}
+{% extends 'BackOfficeBundle:Metronic:body-page-content-managed_datatables.html.twig' %}
 
-{% block dynamic_body %}
+{% set title_page = 'unite de sondes' %}
+{% set path_entity_new = 'd' %}
+{#{{ path('admin_sensor_type_new') }}#}
 
-<div class="col-md-12 bootstrap-grid">
-
-    <div class="powerwidget" id="datatable-basic-init" data-widget-editbutton="false">
-        <header>
-            {#<h2>tableaux</h2>#}
-            {#<h2>plup#}
-            {#<small>-</small>#}
-            {#</h2>#}
-        </header>
-        <div class="inner-spacer">
-
-            <ul class="btn-group">
-                <a class="btn btn-success btn-sm" role="button" href="{{ path('admin_sensor_unit_new') }}">New</a>
-            </ul>
-
-            <table class="table table-striped table-hover" id="table-1">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Symbole</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('admin_sensor_unit_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.symbole }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.slug }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('admin_sensor_unit_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_sensor_unit_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-{% endblock dynamic_body %}
+{% block content_txt %}
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for entity in entities %}
+    <tr class="odd gradeX">
+        <td>{{ entity.id }}</td>
+        <td>{{ entity.name }}</td>
+        <td>
+            <div class="btn-toolbar margin-bottom-10">
+                <div class="btn-group btn-group-sm btn-group-solid">
+                    {#<a class="btn blue" href="{{ path('admin_domotique_sensor_type_show', { 'id': entity.id }) }}">{{ 'show'|trans }}</a>#}
+                    <a class="btn blue" href="{{ path('admin_domotique_sensor_type_edit', { 'id': entity.id }) }}">{{ 'edit'|trans }}</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock content_txt %}

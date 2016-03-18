@@ -14,17 +14,15 @@
 <tbody>
 {% for entity in entities %}
     <tr class="odd gradeX">
-        <td><a href="{{ path('admin_sensor_type_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        <td>{{ entity.id }}</td>
         <td>{{ entity.name }}</td>
         <td>
-            <ul>
-                <li>
-                    <a href="{{ path('admin_sensor_type_show', { 'id': entity.id }) }}">show</a>
-                </li>
-                <li>
-                    <a href="{{ path('admin_sensor_type_edit', { 'id': entity.id }) }}">edit</a>
-                </li>
-            </ul>
+            <div class="btn-toolbar margin-bottom-10">
+                <div class="btn-group btn-group-sm btn-group-solid">
+                    {#<a class="btn blue" href="{{ path('admin_domotique_sensor_type_show', { 'id': entity.id }) }}">{{ 'show'|trans }}</a>#}
+                    <a class="btn blue" href="{{ path('admin_domotique_sensor_type_edit', { 'id': entity.id }) }}">{{ 'edit'|trans }}</a>
+                </div>
+            </div>
         </td>
     </tr>
 {% endfor %}
