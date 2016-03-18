@@ -22,7 +22,7 @@ class LogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $logs = $em->getRepository('DomotiqueReseauBundle:Log')->findAll();
+        $logs = $em->getRepository('DomotiqueReseauBundle:Log')->findBy(array(), array('created' => 'DESC'), 500, 0);
 
         return $this->render('@DomotiqueReseau/log/index.html.twig', array(
             'entities' => $logs,

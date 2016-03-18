@@ -13,11 +13,11 @@
 </tr>
 </thead>
 <tbody>
-{% for module in entities %}
+{% for moduleNotify in entities %}
     <tr class="odd gradeX">
         <td>{{ moduleNotify.id }}</td>
         <td>
-            <a href="{{ path('admin_domotique_module_notify_show', { 'id': moduleNotify.id }) }}">{{ moduleNotify.created }}</a>
+            {{ moduleNotify.created }}
         </td>
         <td>{{ moduleNotify.status }}</td>
         <td>

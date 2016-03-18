@@ -18,8 +18,8 @@
 <tbody>
 {% for module in entities %}
     <tr class="odd gradeX">
-        <td><a href="{{ path('admin_domotique_module_show', { 'id': module.id }) }}">{{ module.created }}</a></td>
-        <td>{% if module.modified %}{{ module.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td>{{ module.created }}</td>
+        <td>{{ module.modified|date('Y-m-d H:i:s') }}</td>
         <td>{{ module.id }}</td>
         <td>{{ module.name }}</td>
         <td>{{ module.adressMac }}</td>
