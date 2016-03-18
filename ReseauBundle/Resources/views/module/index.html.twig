@@ -18,7 +18,7 @@
 <tbody>
 {% for module in entities %}
     <tr class="odd gradeX">
-        <td>{{ module.created }}</td>
+        <td>{{ module.created|date('Y-m-d H:i:s') }}</td>
         <td>{{ module.modified|date('Y-m-d H:i:s') }}</td>
         <td>{{ module.id }}</td>
         <td>{{ module.name }}</td>
