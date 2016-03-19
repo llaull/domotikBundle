@@ -13,7 +13,7 @@ class InputController extends Controller
     public function addFuxFakeAction()
     {
         $em = $this->getDoctrine()->getManager();
-//        $sensorFluxAdd = new \DateTime(rand(-12, 12).' hour');
+        //$sensorFluxAdd = new \DateTime(rand(-12, 12).' hour');
         $sensorFluxAdd = new \DateTime();
 
         $moduleId = 1;
