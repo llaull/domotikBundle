@@ -24,3 +24,10 @@ domotique_log_moyen:
 domobox_get_hour:
     path: /flux/hour
     defaults: { _controller: "DomotiqueDomoboxBundle:Output:getCurrentDate" }
+
+#AJAX
+#    set une valeur au controleur qui envera au module
+domotique_module_set_color:
+    path:     /domobox/module/set/
+    defaults: { _controller: DomotiqueDomoboxBundle:Default:getModuleColor }
+
