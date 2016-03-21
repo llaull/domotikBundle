@@ -11,19 +11,23 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-
+        return $this->render('DomotiqueDomoboxBundle:Default:index.html.twig');
     }
 
 
-    public function getModuleColorAction(Request $request)
+    public function setModuleColorAction(Request $request)
     {
+//        json
+        $data = $request->request->get('data');
+        $params = json_decode($data, true);
+
         $curling = $this->container->get('commun.curl');
 
-        $module_url = "http://10.0.112.3/rgb/FFFFFF";
+        $module_url = "http://".$params[0]['module']."/rgb/".$params[2]['color'];
 
 
         $curl = $curling->getToUrl($module_url, false);
-        return new JsonResponse(array('curl' => $curl));
+        return new JsonResponse(array('curl' => $curl, 'set' => $module_url));
 
 
     }

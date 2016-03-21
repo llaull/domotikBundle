@@ -1,1 +1,79 @@
-hello
+{% extends 'FrondOfficeBundle:MetronicWebApp:body-page-content.html.twig' %}
+
+{% block moreCss %}
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    {% stylesheets
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/tinycolorpicker/tinycolorpicker.css'
+    output='assets/global/plugins/tinycolorpicker/tinycolorpicker.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+
+    <!-- END PAGE LEVEL PLUGINS -->
+
+{% endblock moreCss %}
+{% block moreJs %}
+
+
+    {% javascripts
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/tinycolorpicker/jquery.tinycolorpicker.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var $box = $('#colorPicker');
+            $box.tinycolorpicker();
+            console.log("2");
+
+            $box.bind("change", function () {
+
+                var selectedValue = $(this).find(".colorInput").val();
+                var moduleID = $(this).find(".modAdresse").val();
+                console.log(selectedValue);
+                var dataJson = '[' + '{"module":"' + moduleID + '"},' + '{"path":"color"},' + '{"color":"' + selectedValue + '"}' + ']';
+
+                // ajax
+                $.ajax({
+                    data: 'data=' + dataJson,
+                    cache: false,
+                    type: 'POST',
+                    url: '{{ path ('domotique_module_set_color') }}',
+                    success: function (data) {
+                        console.log(data)
+                    }
+                });
+                //end ajax
+
+            });
+
+        });
+    </script>
+
+
+{% endblock moreJs %}
+
+{% set title_page = 'test module RGB' %}
+
+{% block content_txt %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="colorPicker">
+        <a class="color"><div class="colorInner"></div></a>
+        <div class="track"></div>
+        <ul class="dropdown"><li></li></ul>
+        <input type="hidden" class="colorInput"/>
+        <input type="text" class="modAdresse" value="10.0.112.3"/>
+    </div>
+    <br>
+    <br>    <br>
+    <br>
+{% endblock content_txt %}

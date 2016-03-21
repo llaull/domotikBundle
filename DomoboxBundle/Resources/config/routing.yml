@@ -4,10 +4,16 @@ domotiquebundle_domobox_module_flux_json:
     defaults: { _controller: "DomotiqueDomoboxBundle:Input:addJson" }
     methods:  [POST]
 
-
+# cree un faux flux
 domotiquebundle_domobox_module_flux_fake:
     path:     /module/esp8266/post/fake/
     defaults: { _controller: "DomotiqueDomoboxBundle:Input:addFuxFake" }
+
+# TEST module RGB
+domotiquebundle_domobox_module_get_module_RGB:
+    path:     /domobox/module/test/rgb
+    defaults: { _controller: "DomotiqueDomoboxBundle:Default:index" }
+
 
 #retourne les valeurs de toute les sondes
 domotique_log_sonde:
@@ -29,5 +35,5 @@ domobox_get_hour:
 #    set une valeur au controleur qui envera au module
 domotique_module_set_color:
     path:     /domobox/module/set/
-    defaults: { _controller: DomotiqueDomoboxBundle:Default:getModuleColor }
-
+    defaults: { _controller: DomotiqueDomoboxBundle:Default:setModuleColor }
+    methods:  [POST]
