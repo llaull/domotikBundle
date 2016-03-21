@@ -1,12 +1,12 @@
 <?php
 
-namespace Domotique\ReseauBundle\Form;
+namespace Domotique\ReseauBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ModuleNotifyType extends AbstractType
+class ModuleType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +15,12 @@ class ModuleNotifyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('created', 'datetime')
-            ->add('status')
-            ->add('log')
-            ->add('module')
+//            ->add('created', 'datetime')
+//            ->add('modified', 'datetime')
+            ->add('name')
+            ->add('adressMac')
+            ->add('adressIpv4')
+            ->add('location')
         ;
     }
     
@@ -28,7 +30,7 @@ class ModuleNotifyType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Domotique\ReseauBundle\Entity\ModuleNotify'
+            'data_class' => 'Domotique\ReseauBundle\Entity\Module'
         ));
     }
 }

@@ -10,10 +10,13 @@ use Domotique\ReseauBundle\Entity\Module;
 class InputController extends Controller
 {
 
+    /**
+     * @return JsonResponse
+     * $sensorFluxAdd = new \DateTime(rand(-12, 12).' hour');
+     */
     public function addFuxFakeAction()
     {
         $em = $this->getDoctrine()->getManager();
-        //$sensorFluxAdd = new \DateTime(rand(-12, 12).' hour');
         $sensorFluxAdd = new \DateTime();
 
         $moduleId = 1;
@@ -45,6 +48,9 @@ class InputController extends Controller
         return new JsonResponse(array('requete' => "sucess"));
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function addJsonAction()
     {
 

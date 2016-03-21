@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Domotique\ReseauBundle\Entity\Module;
-use Domotique\ReseauBundle\Form\ModuleType;
 
 /**
  * Module controller.
@@ -36,7 +35,7 @@ class ModuleController extends Controller
     public function newAction(Request $request)
     {
         $module = new Module();
-        $form = $this->createForm('Domotique\ReseauBundle\Form\ModuleType', $module);
+        $form = $this->createForm('Domotique\ReseauBundle\Form\Type\ModuleType', $module);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +43,7 @@ class ModuleController extends Controller
             $em->persist($module);
             $em->flush();
 
-            return $this->redirectToRoute('admin_domotique_module_show', array('id' => $module->getId()));
+            return $this->redirectToRoute('admin_domotique_module_index');
         }
 
         return $this->render('@DomotiqueReseau/module/new.html.twig', array(
@@ -74,7 +73,7 @@ class ModuleController extends Controller
     public function editAction(Request $request, Module $module)
     {
         $deleteForm = $this->createDeleteForm($module);
-        $editForm = $this->createForm('Domotique\ReseauBundle\Form\ModuleType', $module);
+        $editForm = $this->createForm('Domotique\ReseauBundle\Form\Type\ModuleType', $module);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

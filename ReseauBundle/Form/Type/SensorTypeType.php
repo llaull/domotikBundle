@@ -1,12 +1,12 @@
 <?php
 
-namespace Domotique\ReseauBundle\Form;
+namespace Domotique\ReseauBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EmplacementType extends AbstractType
+class SensorTypeType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -25,7 +25,7 @@ class EmplacementType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Domotique\ReseauBundle\Entity\Emplacement'
+            'data_class' => 'Domotique\ReseauBundle\Entity\SensorType'
         ));
     }
 }

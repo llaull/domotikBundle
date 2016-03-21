@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Domotique\ReseauBundle\Entity\Emplacement;
-use Domotique\ReseauBundle\Form\EmplacementType;
 
 /**
  * Emplacement controller.
@@ -36,7 +35,7 @@ class EmplacementController extends Controller
     public function newAction(Request $request)
     {
         $emplacement = new Emplacement();
-        $form = $this->createForm('Domotique\ReseauBundle\Form\EmplacementType', $emplacement);
+        $form = $this->createForm('Domotique\ReseauBundle\Form\Type\EmplacementType', $emplacement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +43,7 @@ class EmplacementController extends Controller
             $em->persist($emplacement);
             $em->flush();
 
-            return $this->redirectToRoute('admin_domotique_emplacement_show', array('id' => $emplacement->getId()));
+            return $this->redirectToRoute('admin_domotique_emplacement_index');
         }
 
         return $this->render('@DomotiqueReseau/emplacement/new.html.twig', array(
@@ -74,7 +73,7 @@ class EmplacementController extends Controller
     public function editAction(Request $request, Emplacement $emplacement)
     {
         $deleteForm = $this->createDeleteForm($emplacement);
-        $editForm = $this->createForm('Domotique\ReseauBundle\Form\EmplacementType', $emplacement);
+        $editForm = $this->createForm('Domotique\ReseauBundle\Form\Type\EmplacementType', $emplacement);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

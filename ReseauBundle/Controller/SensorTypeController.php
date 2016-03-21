@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Domotique\ReseauBundle\Entity\SensorType;
-use Domotique\ReseauBundle\Form\SensorTypeType;
 
 /**
  * SensorType controller.
@@ -36,7 +35,7 @@ class SensorTypeController extends Controller
     public function newAction(Request $request)
     {
         $sensorType = new SensorType();
-        $form = $this->createForm('Domotique\ReseauBundle\Form\SensorTypeType', $sensorType);
+        $form = $this->createForm('Domotique\ReseauBundle\Form\Type\SensorTypeType', $sensorType);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +43,7 @@ class SensorTypeController extends Controller
             $em->persist($sensorType);
             $em->flush();
 
-            return $this->redirectToRoute('admin_domotique_sensor_type_show', array('id' => $sensorType->getId()));
+            return $this->redirectToRoute('admin_domotique_sensor_type_index');
         }
 
         return $this->render('@DomotiqueReseau/sensortype/new.html.twig', array(
@@ -74,7 +73,7 @@ class SensorTypeController extends Controller
     public function editAction(Request $request, SensorType $sensorType)
     {
         $deleteForm = $this->createDeleteForm($sensorType);
-        $editForm = $this->createForm('Domotique\ReseauBundle\Form\SensorTypeType', $sensorType);
+        $editForm = $this->createForm('Domotique\ReseauBundle\Form\Type\SensorTypeType', $sensorType);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

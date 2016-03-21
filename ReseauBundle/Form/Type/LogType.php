@@ -1,12 +1,12 @@
 <?php
 
-namespace Domotique\ReseauBundle\Form;
+namespace Domotique\ReseauBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SensorTypeType extends AbstractType
+class LogType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,11 @@ class SensorTypeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('sonsorValue')
+            ->add('sensorId')
+            ->add('module')
+            ->add('sensorType')
+            ->add('sensorUnit')
         ;
     }
     
@@ -25,7 +29,7 @@ class SensorTypeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Domotique\ReseauBundle\Entity\SensorType'
+            'data_class' => 'Domotique\ReseauBundle\Entity\Log'
         ));
     }
 }

@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Domotique\ReseauBundle\Entity\SensorUnit;
-use Domotique\ReseauBundle\Form\SensorUnitType;
 
 /**
  * SensorUnit controller.
@@ -36,7 +35,7 @@ class SensorUnitController extends Controller
     public function newAction(Request $request)
     {
         $sensorUnit = new SensorUnit();
-        $form = $this->createForm('Domotique\ReseauBundle\Form\SensorUnitType', $sensorUnit);
+        $form = $this->createForm('Domotique\ReseauBundle\Form\Type\SensorUnitType', $sensorUnit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +43,7 @@ class SensorUnitController extends Controller
             $em->persist($sensorUnit);
             $em->flush();
 
-            return $this->redirectToRoute('admin_domotique_sensor_unit_show', array('id' => $sensorUnit->getId()));
+            return $this->redirectToRoute('admin_domotique_sensor_unit_index');
         }
 
         return $this->render('@DomotiqueReseau/sensorunit/new.html.twig', array(
@@ -74,7 +73,7 @@ class SensorUnitController extends Controller
     public function editAction(Request $request, SensorUnit $sensorUnit)
     {
         $deleteForm = $this->createDeleteForm($sensorUnit);
-        $editForm = $this->createForm('Domotique\ReseauBundle\Form\SensorUnitType', $sensorUnit);
+        $editForm = $this->createForm('Domotique\ReseauBundle\Form\Type\SensorUnitType', $sensorUnit);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

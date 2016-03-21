@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Domotique\ReseauBundle\Entity\ModuleNotify;
-use Domotique\ReseauBundle\Form\ModuleNotifyType;
 
 /**
  * ModuleNotify controller.
@@ -36,7 +35,7 @@ class ModuleNotifyController extends Controller
     public function newAction(Request $request)
     {
         $moduleNotify = new ModuleNotify();
-        $form = $this->createForm('Domotique\ReseauBundle\Form\ModuleNotifyType', $moduleNotify);
+        $form = $this->createForm('Domotique\ReseauBundle\Form\Type\ModuleNotifyType', $moduleNotify);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +43,7 @@ class ModuleNotifyController extends Controller
             $em->persist($moduleNotify);
             $em->flush();
 
-            return $this->redirectToRoute('admin_domotique_module_notify_show', array('id' => $moduleNotify->getId()));
+            return $this->redirectToRoute('admin_domotique_module_notify_index');
         }
 
         return $this->render('@DomotiqueReseau/modulenotify/new.html.twig', array(
@@ -74,7 +73,7 @@ class ModuleNotifyController extends Controller
     public function editAction(Request $request, ModuleNotify $moduleNotify)
     {
         $deleteForm = $this->createDeleteForm($moduleNotify);
-        $editForm = $this->createForm('Domotique\ReseauBundle\Form\ModuleNotifyType', $moduleNotify);
+        $editForm = $this->createForm('Domotique\ReseauBundle\Form\Type\ModuleNotifyType', $moduleNotify);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

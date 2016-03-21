@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Domotique\ReseauBundle\Entity\Log;
-use Domotique\ReseauBundle\Form\LogType;
 
 /**
  * Log controller.
@@ -36,7 +35,7 @@ class LogController extends Controller
     public function newAction(Request $request)
     {
         $log = new Log();
-        $form = $this->createForm('Domotique\ReseauBundle\Form\LogType', $log);
+        $form = $this->createForm('Domotique\ReseauBundle\Form\Type\LogType', $log);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +43,7 @@ class LogController extends Controller
             $em->persist($log);
             $em->flush();
 
-            return $this->redirectToRoute('admin_domotique_log_show', array('id' => $log->getId()));
+            return $this->redirectToRoute('admin_domotique_log_index');
         }
 
         return $this->render('@DomotiqueReseau/log/new.html.twig', array(

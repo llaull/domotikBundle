@@ -6,9 +6,8 @@
 
 {% block content_txt %}
 <tr>
-    <th>Created</th>
-    <th>Modified</th>
     <th>Id</th>
+    <th>Created</th>
     <th>Name</th>
     <th>Adressmac</th>
     <th>Adressipv4</th>
@@ -18,9 +17,8 @@
 <tbody>
 {% for module in entities %}
     <tr class="odd gradeX">
-        <td>{{ module.created|date('Y-m-d H:i:s') }}</td>
-        <td>{{ module.modified|date('Y-m-d H:i:s') }}</td>
         <td>{{ module.id }}</td>
+        <td>{{ module.created|date('Y-m-d H:i:s') }}</td>
         <td>{{ module.name }}</td>
         <td>{{ module.adressMac }}</td>
         <td>{{ module.adressIpv4 }}</td>
