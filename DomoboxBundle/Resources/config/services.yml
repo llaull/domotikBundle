@@ -1,8 +1,3 @@
-#services:
-#    domotique_domobox.example:
-#        class: Domotique\DomoboxBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
-
 services:
     commun.curl:
         class: Domotique\DomoboxBundle\Services\MyCurlService
