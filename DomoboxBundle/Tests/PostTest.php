@@ -40,6 +40,6 @@ class PostTest extends WebTestCase
             json_encode(array('data' => $datas))
         );
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertEquals(500, $client->getResponse()->getStatusCode());
     }
 }
