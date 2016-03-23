@@ -21,7 +21,7 @@ class LogControllerTest extends WebTestCase
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/domotique/log/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/domotique/log/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+        $crawler = $client->click($crawler->selectLink('Add New')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
