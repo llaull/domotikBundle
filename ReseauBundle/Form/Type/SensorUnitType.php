@@ -17,7 +17,6 @@ class SensorUnitType extends AbstractType
         $builder
             ->add('symbole')
             ->add('name')
-            ->add('slug')
         ;
     }
     

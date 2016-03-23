@@ -65,6 +65,10 @@ class Module
         $this->modified = new \DateTime();
         $this->created = new \DateTime();
     }
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * @return datetime

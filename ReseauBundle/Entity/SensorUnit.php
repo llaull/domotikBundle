@@ -33,12 +33,7 @@ class SensorUnit
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="slug", type="string", length=90, nullable=false)
-     */
-    private $slug;
+
 
     public function __toString()
     {
@@ -91,22 +86,6 @@ class SensorUnit
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
     }
 
 

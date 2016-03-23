@@ -27,6 +27,7 @@ class EmplacementControllerTest extends WebTestCase
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
             'emplacement[name]'  => 'Test0001',
+
             // ... other fields to fill
         ));
 

@@ -25,35 +25,15 @@ class LogControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'log[field_name]'  => 'Test',
+            'log[sonsorValue]'  => '666',
             // ... other fields to fill
         ));
 
         $client->submit($form);
-        $crawler = $client->followRedirect();
-
-        // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
-
-        // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
-
-        $form = $crawler->selectButton('Update')->form(array(
-            'log[field_name]'  => 'Foo',
-        ));
-
-        $client->submit($form);
-        $crawler = $client->followRedirect();
-
-        // Check the element contains an attribute with value equals "Foo"
-        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
-
-        // Delete the entity
-        $client->submit($form);
         $crawler = $client->click($crawler->selectLink('Back to the list')->link());
 
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Foo")')->count(), 'Missing element td:contains("Test")');
-    }
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("666")')->count(), 'Missing element td:contains("666")');
 
+    }
 
 }

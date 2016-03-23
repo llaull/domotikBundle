@@ -6,11 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ModuleNotifyControllerTest extends WebTestCase
 {
-    /*
+
     public function testCompleteScenario()
     {
-        // Create a new client to browse the application
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
         $client = static::createClient();
+        $s = $container->get('back_office.loging');
+        $s->logIn($client);
 
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/domotique/module/notify/');
@@ -19,7 +24,7 @@ class ModuleNotifyControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'domotique_reseaubundle_modulenotify[field_name]'  => 'Test',
+            'module_notify[status]'  => 'back',
             // ... other fields to fill
         ));
 
@@ -27,13 +32,13 @@ class ModuleNotifyControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("back")')->count(), 'Missing element td:contains("Test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+        $crawler = $client->click($crawler->selectLink('edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'domotique_reseaubundle_modulenotify[field_name]'  => 'Foo',
+            'module_notify[status]'  => 'Foo',
             // ... other fields to fill
         ));
 
@@ -51,5 +56,5 @@ class ModuleNotifyControllerTest extends WebTestCase
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
 
-    */
+
 }

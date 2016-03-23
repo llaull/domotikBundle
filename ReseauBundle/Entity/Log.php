@@ -97,7 +97,7 @@ class Log
 
     public function __toString()
     {
-        return ' > '.$this->sensorValue;
+        return 'log id : '.$this->id;
     }
 
     /**
