@@ -6,11 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class LogControllerTest extends WebTestCase
 {
-    /*
+
     public function testCompleteScenario()
     {
         // Create a new client to browse the application
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
         $client = static::createClient();
+        $s = $container->get('back_office.loging');
+        $s->logIn($client);
 
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/domotique/log/');
@@ -19,7 +25,7 @@ class LogControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'domotique_reseaubundle_log[field_name]'  => 'Test',
+            'log[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,8 +39,7 @@ class LogControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'domotique_reseaubundle_log[field_name]'  => 'Foo',
-            // ... other fields to fill
+            'log[field_name]'  => 'Foo',
         ));
 
         $client->submit($form);
@@ -44,12 +49,11 @@ class LogControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
 
         // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
-        $crawler = $client->followRedirect();
+        $client->submit($form);
+        $crawler = $client->click($crawler->selectLink('Back to the list')->link());
 
-        // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("Foo")')->count(), 'Missing element td:contains("Test")');
     }
 
-    */
+
 }
