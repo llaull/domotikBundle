@@ -1,6 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'BackOfficeBundle:Metronic:body-page-content-blank.html.twig' %}
 
-{% block body %}
+{% set title_page = 'lod des sondes' %}
+{% set path_entity_new = 'admin_domotique_log_new' %}
+{% set table_size = 'col-md-12' %}{# col-md-6 col-sm-12#}
+
+{% block content_txt %}
+
     <h1>Log creation</h1>
 
     {{ form_start(form) }}
@@ -13,4 +18,4 @@
             <a href="{{ path('admin_domotique_log_index') }}">Back to the list</a>
         </li>
     </ul>
-{% endblock %}
+{% endblock content_txt %}
