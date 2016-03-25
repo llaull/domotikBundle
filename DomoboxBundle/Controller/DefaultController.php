@@ -11,8 +11,13 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('DomotiqueDomoboxBundle:Default:index.html.twig');
+        $response =
+            "s";
+        return $this->render('DomotiqueDomoboxBundle:Default:modules.html.twig', array(
+            'modules' => $response,
+        ));
     }
+
 
 
     public function setModuleColorAction(Request $request)

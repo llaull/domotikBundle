@@ -45,7 +45,6 @@ class OutputController extends Controller
     l.sonsor_value,
     m.name,
     m.mac,
-    u.slug,
     t.name AS nom_sonde,
     E.name AS emplacement
 FROM
