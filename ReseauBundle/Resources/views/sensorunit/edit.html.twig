@@ -1,21 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'BackOfficeBundle:Metronic:body-page-content-form.html.twig' %}
 
-{% block body %}
-    <h1>SensorUnit edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_domotique_sensor_unit_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+{% set form = edit_form %}
+{% set title_page = 'editer un SensorUnit' %}
+{% set path_entity_index = 'admin_domotique_sensor_unit_index' %}
+{% set table_size = 'col-md-12' %}

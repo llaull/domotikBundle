@@ -139,7 +139,7 @@ class Module
      */
     public function getAdressMac()
     {
-        return $this->adressMac;
+        return preg_replace("/(..)(?!$)/i", "$1:", $this->adressMac);
     }
 
     /**
@@ -147,7 +147,9 @@ class Module
      */
     public function setAdressMac($adressMac)
     {
-        $this->adressMac = $adressMac;
+        //retire les : pour stoker les adress MAC
+        $r = str_replace(":","",$adressMac);
+        $this->adressMac = $r;
     }
 
     /**

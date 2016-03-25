@@ -1,28 +1,5 @@
 {% extends 'BackOfficeBundle:Metronic:body-page-content-form.html.twig' %}
 
 {% set title_page = 'ajouter un module' %}
-{% set path_entity_new = 'admin_domotique_log_new' %}
+{% set path_entity_index = 'admin_domotique_module_index' %}
 {% set table_size = 'col-md-12' %}{# col-md-6 col-sm-12#}
-{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
-
-{% block content_txt %}
-
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {#<input type="submit" value="Create" />#}
-    <div class="form-actions">
-        <div class="row">
-            <div class="col-md-offset-3 col-md-9">
-                <button type="submit" class="btn green">Create</button>
-                <button type="button" class="btn grey-salsa btn-outline">Cancel</button>
-            </div>
-        </div>
-    </div>
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_domotique_log_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock content_txt %}

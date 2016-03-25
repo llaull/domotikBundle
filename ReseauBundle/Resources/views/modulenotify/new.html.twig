@@ -1,16 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends 'BackOfficeBundle:Metronic:body-page-content-form.html.twig' %}
 
-{% block body %}
-    <h1>ModuleNotify creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_domotique_module_notify_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock %}
+{% set title_page = 'ajouter un ModuleNotify' %}
+{% set path_entity_index = 'admin_domotique_module_notify_index' %}
+{% set table_size = 'col-md-12' %}{# col-md-6 col-sm-12#}
