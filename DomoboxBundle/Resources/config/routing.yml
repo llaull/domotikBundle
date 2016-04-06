@@ -12,7 +12,14 @@ domotiquebundle_domobox_module_flux_fake:
 # TEST module RGB
 domotiquebundle_domobox_module_get_module_RGB:
     path:     /domobox/module/test/rgb
+    defaults: { _controller: "DomotiqueDomoboxBundle:Default:RGB" }
+
+# debug
+domotiquebundle_domobox_debug:
+    path:     /domobox/module/debug
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:index" }
+
+
 
 
 #retourne les valeurs de toute les sondes

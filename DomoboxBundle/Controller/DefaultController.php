@@ -18,6 +18,14 @@ class DefaultController extends Controller
         ));
     }
 
+    public function RGBAction()
+    {
+        $response =
+            "s";
+        return $this->render('DomotiqueDomoboxBundle:Default:index.html.twig', array(
+            'modules' => $response,
+        ));
+    }
 
 
     public function setModuleColorAction(Request $request)
