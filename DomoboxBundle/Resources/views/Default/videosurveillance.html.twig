@@ -5,4 +5,6 @@
 
 {% set title_page = 'test module RGB' %}
 
-{% block content_txt %}{{ dump() }}{% endblock content_txt %}
+{% block content_txt %}
+    <img src="{{ asset('tmp/' ~ webcam1 ~ '.jpg') }}" alt=""/>
+{% endblock content_txt %}

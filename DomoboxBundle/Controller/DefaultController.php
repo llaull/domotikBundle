@@ -27,6 +27,25 @@ class DefaultController extends Controller
         ));
     }
 
+    public function videoAction()
+    {
+        //
+        if (!file_exists('tmp/')) {
+            mkdir('tmp/', 0777, true);
+        }
+        $random = md5(uniqid(rand(), true));
+        var_dump($random);
+
+        //
+        $curling = $this->container->get('commun.curl');
+        $curlVideoOne = $curling->downloadImage("http://symfony.next.local/app_dev.php/images/76bb744.jpg", 'tmp/'.$random.'.jpg');
+
+        //
+        return $this->render('DomotiqueDomoboxBundle:Default:videosurveillance.html.twig', array(
+            'webcam1' => $random,
+        ));
+    }
+
 
     public function setModuleColorAction(Request $request)
     {
