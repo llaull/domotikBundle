@@ -1,48 +1,50 @@
-<li class="nav-item  start active open">
+<li class="nav-item {% if app.request.attributes.get('_route') == ('admin_domotique_log_index' or 'admin_domotique_module_notify_index') %}active open{% endif %}">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-home"></i>
         <span class="title">Domotique</span>
         <span class="arrow"></span>
     </a>
     <ul class="sub-menu">
-
-        <li class="nav-item start  start active open">
+        <li class="nav-item {% if app.request.attributes.get('_route') == 'admin_domotique_log_index' %}active open{% endif %}">
             <a href="{{ path('admin_domotique_log_index') }}" class="nav-link ">
                 <i class="entypo entypo-database"></i>
                 <span class="title"> les Logs des sondes</span>
             </a>
         </li>
-        <li class="nav-item start ">
+        <li class="nav-item {% if app.request.attributes.get('_route') == 'admin_domotique_module_notify_index' %}active open{% endif %}">
             <a href="{{ path('admin_domotique_module_notify_index') }}" class="nav-link ">
                 <i class="entypo entypo-database"></i>
                 <span class="title"> les Logs des modules</span>
             </a>
         </li>
-        <li class="nav-item start ">
+
+        <li class="nav-item {% if app.request.attributes.get('_route') == 'admin_domotique_module_index' %}active open{% endif %}">
             <a href="{{ path('admin_domotique_module_index') }}" class="nav-link ">
                 <i class="fa fa-puzzle-piece"></i>
                 <span class="title"> les modules</span>
             </a>
         </li>
-        <li class="nav-item start ">
+
+        <li class="nav-item {% if app.request.attributes.get('_route') == 'admin_domotique_emplacement_index' %}active open{% endif %}">
             <a href="{{ path('admin_domotique_emplacement_index') }}" class="nav-link ">
                 <i class="entypo-compass"></i>
                 <span class="title"> les Emplacements</span>
             </a>
         </li>
-        <li class="nav-item start ">
+
+        <li class="nav-item {% if app.request.attributes.get('_route') == 'admin_domotique_sensor_type_index' %}active open{% endif %}">
             <a href="{{ path('admin_domotique_sensor_type_index') }}" class="nav-link ">
                 <i class="entypo-air"></i>
                 <span class="title"> les Types</span>
             </a>
         </li>
-        <li class="nav-item start ">
+
+        <li class="nav-item {% if app.request.attributes.get('_route') == 'admin_domotique_sensor_unit_index' %}active open{% endif %}">
             <a href="{{ path('admin_domotique_sensor_unit_index') }}" class="nav-link ">
                 <i class="entypo-language"></i>
                 <span class="title"> les Unit</span>
             </a>
         </li>
-
 
     </ul>
 </li>

@@ -9,8 +9,8 @@
     </a>
 </li>
 
-<li>
-    <a href="{{ path('domotiquebundle_domobox_debug') }}" class="nav-link ">
+<li {% if app.request.attributes.get('_route') == 'domotiquebundle_domobox_debug' %}class="nav-item  active open"{% endif %}>
+    <a href="{{ path('domotiquebundle_domobox_debug') }}" class="nav-link">
         <i class="fa fa-industry"></i>
         <span class="title">mode debug</span>
     </a>
@@ -20,15 +20,15 @@
     <h3 class="uppercase">TEST</h3>
 </li>
 
-<li>
-    <a href="{{ path('domotiquebundle_domobox_module_get_module_RGB') }}" class="nav-link ">
+<li {% if app.request.attributes.get('_route') == 'domotiquebundle_domobox_module_get_module_RGB' %}class="nav-item  active open"{% endif %}>
+    <a href="{{ path('domotiquebundle_domobox_module_get_module_RGB') }}" class="nav-link">
         <i class="fa fa-industry"></i>
         <span class="title">module RGB</span>
     </a>
 </li>
 
-<li>
-    <a href="{{ path('domotiquebundle_domobox_video') }}" class="nav-link ">
+<li {% if app.request.attributes.get('_route') == 'domotiquebundle_domobox_video' %}class="nav-item  active open"{% endif %}>
+    <a href="{{ path('domotiquebundle_domobox_video') }}" class="nav-link">
         <i class="fa fa-video-camera"></i>
         <span class="title">videosurveillance</span>
     </a>
