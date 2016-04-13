@@ -16,7 +16,6 @@ class MyCurlService
 
         curl_setopt($ch, CURLOPT_TIMEOUT, 1000);
         curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
-        // curl_setopt($ch, CURLOPT_WRITEFUNCTION, "curl_callback");
 
         $response = curl_exec($ch);
         curl_close($ch);

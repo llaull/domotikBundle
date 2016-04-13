@@ -18,7 +18,7 @@ class DefaultController extends Controller
         ));
     }
 
-    public function RGBAction()
+    public function rgbAction()
     {
         $response =
             "s";
@@ -37,7 +37,7 @@ class DefaultController extends Controller
 
         //
         $curling = $this->container->get('commun.curl');
-        $curlVideoOne = $curling->downloadImage("http://symfony.next.local/app_dev.php/images/76bb744.jpg", 'tmp/'.$random.'.jpg');
+        $curling->downloadImage("http://symfony.next.local/app_dev.php/images/76bb744.jpg", 'tmp/'.$random.'.jpg');
 
         //
         return $this->render('DomotiqueDomoboxBundle:Default:videosurveillance.html.twig', array(
