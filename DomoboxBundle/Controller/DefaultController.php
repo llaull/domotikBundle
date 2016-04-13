@@ -34,7 +34,6 @@ class DefaultController extends Controller
             mkdir('tmp/', 0777, true);
         }
         $random = md5(uniqid(rand(), true));
-        var_dump($random);
 
         //
         $curling = $this->container->get('commun.curl');
@@ -44,6 +43,10 @@ class DefaultController extends Controller
         return $this->render('DomotiqueDomoboxBundle:Default:videosurveillance.html.twig', array(
             'webcam1' => $random,
         ));
+    }
+
+    public function videoCurlAction(){
+
     }
 
 
