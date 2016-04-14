@@ -10,6 +10,9 @@ namespace Domotique\DomoboxBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class OutputController extends Controller
 {
@@ -84,4 +87,27 @@ ORDER BY module_id , sensor_type , sonsor_unit';
         return new JsonResponse($results);
 
     }
+
+    /*
+     * envoie une image en base64
+     *
+     */
+    public function getWebcamAction(Request $request){
+
+        $data = $request->request->get('data');
+        $params = current(json_decode($data, true));
+
+        $image = "webcam.png?".rand()."";
+        $file =    base64_encode(file_get_contents($params['webcam']));
+        $headers = array(
+            'Content-Type'     => 'image/jpg',
+            'Pragma-directive' => 'no-cache',
+            'Cache-directive' => 'no-cache',
+            'Cache-control' => 'no-cache',
+            'Pragma:' => 'no-cache',
+            'Expires:' => 0,
+            'Content-Disposition' => 'inline; filename="'.$image.'"');
+        return new Response($file, 200, $headers);
+    }
+
 }

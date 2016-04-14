@@ -26,7 +26,10 @@ domotiquebundle_domobox_debug:
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:index" }
 
 
-
+# retourne une image
+domotiquebundle_domobox_webcam:
+    path:     /domobox/testbi
+    defaults: { _controller: "DomotiqueDomoboxBundle:Output:getWebcam" }
 
 #retourne les valeurs de toute les sondes
 domotique_log_sonde:
