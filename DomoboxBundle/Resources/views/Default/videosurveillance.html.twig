@@ -5,7 +5,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            var dataJson = '[' + '{"webcam":"' + 'http://symfony.next.local/tmp/plup.jpg' + '"}' + ']';
+            var dataJson = '[' + '{"webcam":"' + '{{ webcams[0] }}' + '"}' + ']';
 
             setInterval(function () {
 
