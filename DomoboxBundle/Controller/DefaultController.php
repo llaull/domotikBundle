@@ -33,12 +33,13 @@ class DefaultController extends Controller
     }
 
 
-    public function setModuleColorAction(Request $request)
+        public function setModuleColorAction(Request $request)
     {
 //        json
         $data = $request->request->get('data');
         $params = json_decode($data, true);
 
+       // die(var_dump($params));
         $curling = $this->container->get('commun.curl');
 
         $module_url = "http://".$params[0]['module']."/rgb/".$params[2]['color'];
@@ -49,6 +50,5 @@ class DefaultController extends Controller
 
 
     }
-
 
 }

@@ -4,6 +4,8 @@ namespace Domotique\DomoboxBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Domotique\ReseauBundle\Entity\Log;
 use Domotique\ReseauBundle\Entity\Module;
 
@@ -47,53 +49,17 @@ class InputController extends Controller
 
         return new JsonResponse(array('requete' => "sucess"));
     }
-
     /**
      * @return JsonResponse
      */
     public function addJsonAction()
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $params = array();
-        $logger = $this->get('logger');
+        $request = Request::createFromGlobals();
 
-        $content = $this->get("request")->getContent();
 
-        $logger->error($content);
-        if (!empty($content)) {
-            $params = json_decode($content, true); // 2nd param to get as array
-        }
+        die(var_dump($request->query->all()));
 
-        $logger->error($params);
-        //recherche module
-        $moduleX = $em->getRepository('DomotiqueReseauBundle:Module')
-            ->findOneBy(array('adressMac' => $params['mac']));
-        if (!$moduleX) {
-            $logger->error("Unable to find module entity.");
-//
-            $module = new Module();
-            $module->setId(NULL);
-            $module->setAdressMac($params['mac']);
-            $module->setAdressIpv4($params['ipv4']);
-//
-            $em->persist($module);
-            $em->flush();
-        } else {
-            $logger->error("ok !");
-            foreach ($params['sensors'] as $k => $v) {
-                $log = new Log();
-                $sensorType = $em->getRepository('DomotiqueReseauBundle:SensorType')->find($params['sensors'][$k]['sensor type Id']);
-                $sensorUnit = $em->getRepository('DomotiqueReseauBundle:SensorUnit')->find($params['sensors'][$k]['sensor unit Id']);
-                $log->setModule($moduleX);
-                $log->setSensorId($params['sensors'][$k]['sensor Id']);
-                $log->setSensorType($sensorType);
-                $log->setSensorUnit($sensorUnit);
-                $log->setSonsorValue($params['sensors'][$k]['sensor value']);
-                $em->persist($log);
-            }
-            $em->flush();
-        }
         return new JsonResponse(array('requete' => "sucess"));
     }
 }
