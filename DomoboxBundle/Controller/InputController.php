@@ -5,7 +5,6 @@ namespace Domotique\DomoboxBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Domotique\ReseauBundle\Entity\Log;
 use Domotique\ReseauBundle\Entity\Module;
 
@@ -54,12 +53,6 @@ class InputController extends Controller
      */
     public function addJsonAction()
     {
-
-        $request = Request::createFromGlobals();
-
-
-        die(var_dump($request->query->all()));
-
         return new JsonResponse(array('requete' => "sucess"));
     }
 }
