@@ -4,22 +4,35 @@
 {% block moreJs %}
     <script type="text/javascript">
 
+
         $(document).ready(function () {
             var dataJson = '[' + '{"webcam":"' + '{{ webcams[0] }}' + '"}' + ']';
 
-            setInterval(function () {
-
+            var postMe = function(){
                 $.ajax({
                     type: "POST",
                     url: "{{ path('domotiquebundle_domobox_webcam') }}",
                     data: 'data=' + dataJson,
                     cache: false,
                     success: function (data) {
-                        $('#imagex').html('<img src="data:image/png;base64,' + data + '" />');
+                        if(data.error != "anonymous"){
+                            $('#webcams').html('<img src="data:image/png;base64,' + data + '" />');
+                            setInterval(postMe, 5000);
+                        } else {
+                            $('#webcams').html('<img src="data:image/png;base64,' + data.image + '" />');
+                            $('#webcams').html('<img src="data:image/png;base64,' + data.image + '" />');
+                            clearInterval(postMe);
+                        }
+                    },
+                    error: function (result) {
+                        console.log("Error");
                     }
                 });
+            };
 
-            }, 5000);
+            postMe();
+
+
         });
     </script>
 {% endblock moreJs %}
@@ -27,5 +40,6 @@
 {% set title_page = 'test module RGB' %}
 
 {% block content_txt %}
-    <div id="imagex"></div>
+    {{ include("@FrondOffice/MetronicWebApp/note-warning-connexion.twig") }}
+    <div id="webcams"></div>
 {% endblock content_txt %}

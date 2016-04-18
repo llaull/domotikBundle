@@ -16,7 +16,7 @@ domotiquebundle_domobox_module_get_module_RGB:
 
 # TEST module RGB
 domotiquebundle_domobox_video:
-    path:     /admin/domobox/videosurveillance
+    path:     /domobox/videosurveillance
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:video" }
 
 
@@ -28,7 +28,7 @@ domotiquebundle_domobox_debug:
 
 # retourne une image
 domotiquebundle_domobox_webcam:
-    path:     /domobox/testbi
+    path:     /domobox/output/webcam
     defaults: { _controller: "DomotiqueDomoboxBundle:Output:getWebcam" }
 
 #retourne les valeurs de toute les sondes
