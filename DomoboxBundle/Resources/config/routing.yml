@@ -14,7 +14,7 @@ domotiquebundle_domobox_module_get_module_RGB:
     path:     /domobox/module/test/rgb
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:rgb" }
 
-# TEST module RGB
+#
 domotiquebundle_domobox_video:
     path:     /domobox/videosurveillance
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:video" }

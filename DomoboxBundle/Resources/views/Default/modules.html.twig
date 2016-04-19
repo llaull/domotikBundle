@@ -3,6 +3,42 @@
 {% block moreCss %}{% endblock moreCss %}
 {% block moreJs %}{% endblock moreJs %}
 
-{% set title_page = 'test module RGB' %}
+{% set title_page = 'les modules' %}
 
-{% block content_txt %}{% endblock content_txt %}
+{% block content_txt %}
+
+    {% for entity in emplacements %}
+        {#
+           si annonyme et que la valeur n'est pas "test"
+           ou qu'on est authentifié
+           on affiche le titre "test"
+        #}
+        {% if (is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and entity.name != "test") or is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    {#<!-- BEGIN Portlet PORTLET-->#}
+                    <div class="portlet box bg-blue bg-font-blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                {#<i class="fa fa-gift bg-font-blue"></i>#}
+                                {{ entity.name }}</div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                <a href="javascript:;" class="reload"> </a>
+                                <a href="" class="fullscreen"> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+
+                        </div>
+                    </div>
+                    {#<!-- END Portlet PORTLET-->#}
+                </div>
+            </div>
+
+        {% endif %}
+    {% endfor %}
+
+{% endblock content_txt %}

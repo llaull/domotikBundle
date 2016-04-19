@@ -6,16 +6,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Domotique\ReseauBundle\Entity\Emplacement;
 
 class DefaultController extends Controller
 {
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
-        $response =
-            "s";
+
+        $em = $this->getDoctrine()->getManager();
+        $emplacements = $em->getRepository('DomotiqueReseauBundle:Emplacement')->findBy(array(), array('name' => 'ASC'));
+
         return $this->render('DomotiqueDomoboxBundle:Default:modules.html.twig', array(
-            'modules' => $response,
+            'emplacements' => $emplacements,
         ));
+
     }
 
     public function rgbAction()
