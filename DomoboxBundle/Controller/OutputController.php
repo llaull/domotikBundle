@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Domotique\ReseauBundle\Entity\ModuleNotify;
 
 
 class OutputController extends Controller
@@ -36,9 +37,8 @@ class OutputController extends Controller
         return new JsonResponse($return);
     }
 
-    public function getCurrentValueAction()
+    public function getContainer()
     {
-
         $rq = 'SELECT
     l.id,
     l.module_id,
@@ -83,8 +83,27 @@ ORDER BY module_id , sensor_type , sonsor_unit';
         $statement->execute();
         $results = $statement->fetchAll();
 
-        return new JsonResponse($results);
+        return $results;
+    }
 
+
+    public function getCurrentValueJsonAction()
+    {
+        return new JsonResponse($this->getContainer());
+    }
+
+    /*
+     *
+     */
+    public function getDomoboxNotifyAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $moduleNotifies = $em->getRepository('DomotiqueReseauBundle:ModuleNotify')->findBy(array(), array('created' => 'DESC'));
+
+        return $this->render('DomotiqueDomoboxBundle:ui_notification:index.html.twig', array(
+            'entities' => $moduleNotifies,
+        ));
     }
 
     /*

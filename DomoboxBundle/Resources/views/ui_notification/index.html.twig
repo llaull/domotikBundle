@@ -1,0 +1,26 @@
+{% for moduleNotify in entities %}
+
+    {# si le nom du module n'est pas null #}
+    {% if moduleNotify.module.name is not null %}
+        {#
+            gestion du fa icone
+        #}
+        {% if moduleNotify.status == "back" %}
+            {% set faIcone = 'fa fa-plus-square' %}
+        {% else %}
+            {% set faIcone = 'fa fa-minus-square-o' %}
+        {% endif %}
+
+        <li>
+            <a href="javascript:;">
+                <span class="time">{{ moduleNotify.created|date('d-m-Y H:i:s') }}</span>
+            <span class="details">
+                <span class="label label-sm label-icon label-success">
+                    <i class="{{ faIcone }}"></i>
+                </span>
+                {{ moduleNotify.module.name }}
+            </span>
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}

@@ -20,8 +20,14 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $emplacements = $em->getRepository('DomotiqueReseauBundle:Emplacement')->findBy(array(), array('name' => 'ASC'));
 
+        //
+//        $yourController = $this->get('domotique.modules');
+//        $modules = $yourController->getCurrentValueJsonAction();
+
+//        die(var_dump($modules));
         return $this->render('DomotiqueDomoboxBundle:Default:modules.html.twig', array(
             'emplacements' => $emplacements,
+//            'modules' => $modules,
         ));
 
     }

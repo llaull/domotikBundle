@@ -4,4 +4,4 @@ services:
         arguments: ["@service_container"]
     domotique.modules:
         class: Domotique\DomoboxBundle\Controller\OutputController
-#        arguments: ["@service_container"]
+#        arguments: ["@doctrine.orm.entity_manager"]

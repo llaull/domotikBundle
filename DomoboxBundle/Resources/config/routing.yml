@@ -34,7 +34,7 @@ domotiquebundle_domobox_webcam:
 #retourne les valeurs de toute les sondes
 domotique_log_sonde:
     path: /log/value
-    defaults: { _controller: "DomotiqueDomoboxBundle:Output:getCurrentValue" }
+    defaults: { _controller: "DomotiqueDomoboxBundle:Output:getCurrentValueJson" }
 
 #donne la moyenne selont l'unitée et le lieu
 domotique_log_moyen:
