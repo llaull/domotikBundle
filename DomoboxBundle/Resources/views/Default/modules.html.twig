@@ -13,7 +13,7 @@
            ou qu'on est authentifié
            on affiche le titre "test"
         #}
-        {% if (is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and emplacement.isPublic != true) or is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if (is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and emplacement.isPublic == true) or is_granted('IS_AUTHENTICATED_FULLY') %}
 
             <div class="row">
                 <div class="col-md-12">
