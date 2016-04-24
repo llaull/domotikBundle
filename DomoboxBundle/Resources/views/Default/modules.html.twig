@@ -7,31 +7,57 @@
 
 {% block content_txt %}
 
-    {% for entity in emplacements %}
+    {% for emplacement in emplacements %}
         {#
            si annonyme et que la valeur n'est pas "test"
            ou qu'on est authentifié
            on affiche le titre "test"
         #}
-        {% if (is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and entity.name != "test") or is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if (is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and emplacement.isPublic != true) or is_granted('IS_AUTHENTICATED_FULLY') %}
 
             <div class="row">
                 <div class="col-md-12">
                     {#<!-- BEGIN Portlet PORTLET-->#}
-                    <div class="portlet box bg-blue bg-font-blue">
+                    <div class="portlet box blue-steel">
                         <div class="portlet-title">
                             <div class="caption">
-                                {#<i class="fa fa-gift bg-font-blue"></i>#}
-                                {{ entity.name }}</div>
+                                {#<i class="fa fa-gift"></i>#}
+                                {{ emplacement.name }} </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse"> </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                <a href="javascript:;" class="reload"> </a>
-                                <a href="" class="fullscreen"> </a>
+                                {#<a href="#portlet-config" data-toggle="modal" class="config"> </a>#}
+                                {#<a href="javascript:;" class="reload"> </a>#}
+                                {#<a href="" class="fullscreen"> </a>#}
+                                {#<a href="javascript:;" class="remove"> </a>#}
                             </div>
                         </div>
                         <div class="portlet-body">
 
+                            {% for module in modules %}
+                                {% if  emplacement.name == module.emplacement %}
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            {#<!-- BEGIN Portlet module -->#}
+                                            <div class="portlet box blue-hoki">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <i class="fa fa-gift"></i>{{ module.name }} </div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <div class="scroller" style="height:100px" data-rail-visible="1"
+                                                         data-rail-color="yellow" data-handle-color="#a1b2bd">
+                                                        {{ module.sonsor_value }}
+                                                        {{ module.unitee_symbole }}
+                                                    </div>
+                                                </div>
+                                                {#<!-- END Portlet PORTLET-->#}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                     {#<!-- END Portlet PORTLET-->#}
@@ -40,5 +66,4 @@
 
         {% endif %}
     {% endfor %}
-{#{{ dump() }}#}
 {% endblock content_txt %}
