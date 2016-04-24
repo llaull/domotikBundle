@@ -83,6 +83,7 @@ FROM
         domotique__sensor_log
     WHERE
          created > CURDATE()
+        AND sensor_type <> 1
         -- AND created > SUBTIME(NOW(),"02:00:00")
       -- AND DATE_SUB(CURTIME(),INTERVAL 1 HOUR) >= created
     GROUP BY module_id , sonsor_unit , sensor_type) AS b ON b.module_id = l.module_id

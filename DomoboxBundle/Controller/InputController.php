@@ -20,10 +20,10 @@ class InputController extends Controller
         $em = $this->getDoctrine()->getManager();
         $sensorFluxAdd = new \DateTime();
 
-        $moduleId = 2;
+        $moduleId = 1;
         $sensorId = 1;
         $sensorTypeId = 2;
-        $sensorUnitId = 3;
+        $sensorUnitId = 2;
         $sensorValue = rand(20, 25);
 
         $log = new Log();
