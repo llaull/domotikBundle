@@ -4,9 +4,7 @@ namespace Domotique\DomoboxBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Domotique\ReseauBundle\Entity\Log;
-use Domotique\ReseauBundle\Entity\Module;
 
 class InputController extends Controller
 {
@@ -22,8 +20,8 @@ class InputController extends Controller
 
         $moduleId = 1;
         $sensorId = 1;
-        $sensorTypeId = 2;
-        $sensorUnitId = 2;
+        $sensorTypeId = 8;
+        $sensorUnitId = 1;
         $sensorValue = rand(20, 25);
 
         $log = new Log();
