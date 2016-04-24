@@ -2,17 +2,10 @@
     <h3 class="uppercase">interface</h3>
 </li>
 
-<li>
-    <a href="" class="nav-link ">
+<li {% if app.request.attributes.get('_route') == 'domotiquebundle_domobox' %}class="nav-item  active open"{% endif %}>
+    <a href="{{ path('domotiquebundle_domobox') }}" class="nav-link {% if app.request.attributes.get('_route') == 'domotiquebundle_domobox_debug' %}nav-toggle{% endif %}">
         <i class="fa fa-industry"></i>
         <span class="title">mode module</span>
-    </a>
-</li>
-
-<li {% if app.request.attributes.get('_route') == 'domotiquebundle_domobox_debug' %}class="nav-item  active open"{% endif %}>
-    <a href="{{ path('domotiquebundle_domobox_debug') }}" class="nav-link {% if app.request.attributes.get('_route') == 'domotiquebundle_domobox_debug' %}nav-toggle{% endif %}">
-        <i class="fa fa-industry"></i>
-        <span class="title">mode debug</span>
     </a>
 </li>
 

@@ -1,7 +1,32 @@
 {% extends 'FrondOfficeBundle:MetronicWebApp:body-page-content.html.twig' %}
 
-{% block moreCss %}{% endblock moreCss %}
-{% block moreJs %}{% endblock moreJs %}
+{% block moreCss %}
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    {% stylesheets
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/tinycolorpicker/tinycolorpicker.css'
+    output='assets/global/plugins/tinycolorpicker/tinycolorpicker.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+
+    <!-- END PAGE LEVEL PLUGINS -->
+
+{% endblock moreCss %}
+{% block moreJs %}
+
+
+    {% javascripts
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/tinycolorpicker/jquery.tinycolorpicker.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){if($("#colorPicker").length){var c=$("#colorPicker");c.tinycolorpicker(),c.bind("change",function(){var c=$(this).find(".colorInput").val(),o=$(this).find(".modAdresse").val(),a='[{"module":"'+o+'"},{"path":"color"},{"color":"'+c+'"}]';$.ajax({data:"data="+a,cache:!1,type:"POST",url:"{{ path ('domotique_module_set_color') }}",success:function(c){}})})}});
+    </script>
+
+
+{% endblock moreJs %}
 
 {% set title_page = 'les modules' %}
 
@@ -36,26 +61,7 @@
                             {% for module in modules %}
                                 {% if  emplacement.name == module.emplacement %}
 
-
-                                        <div class="col-md-2 ">
-                                            {#<!-- BEGIN Portlet module -->#}
-                                            <div class="portlet box blue-hoki">
-                                                <div class="portlet-title">
-                                                    <div class="caption">
-                                                        {#<i class="fa fa-gift"></i>#}
-                                                        {{ module.name }} </div>
-                                                </div>
-                                                <div class="portlet-body">
-                                                    <div class="scroller" style="height:100px" data-rail-visible="1"
-                                                         data-rail-color="yellow" data-handle-color="#a1b2bd">
-                                                        {{ module.sonsor_value }}
-                                                        {{ module.unitee_symbole }}
-                                                    </div>
-                                                </div>
-                                                {#<!-- END Portlet PORTLET-->#}
-                                            </div>
-                                        </div>
-
+                                    {% include 'DomotiqueDomoboxBundle:ui_module:' ~ module.nom_sonde ~ '.html.twig' with {'foo': 'bar'} %}
 
                                 {% endif %}
                             {% endfor %}

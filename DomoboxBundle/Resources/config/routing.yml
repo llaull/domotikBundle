@@ -20,9 +20,9 @@ domotiquebundle_domobox_video:
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:video" }
 
 
-# debug
-domotiquebundle_domobox_debug:
-    path:     /domobox/module/debug
+# home
+domotiquebundle_domobox:
+    path:     /
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:index" }
 
 

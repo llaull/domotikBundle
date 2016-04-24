@@ -70,7 +70,7 @@ class LogRepository extends EntityRepository
     l.sensor_type,
     l.sonsor_value,
     m.name,
-    m.mac,
+    m.ipv4,
     t.name AS nom_sonde,
     E.name AS emplacement,
     u.symbole as unitee_symbole
