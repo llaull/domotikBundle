@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Domotique\ReseauBundle\Entity\Emplacement;
 
 class DefaultController extends Controller
 {
@@ -34,11 +33,7 @@ class DefaultController extends Controller
 
     public function rgbAction()
     {
-        $response =
-            "s";
-        return $this->render('DomotiqueDomoboxBundle:Default:index.html.twig', array(
-            'modules' => $response,
-        ));
+        return $this->render('DomotiqueDomoboxBundle:Default:testRGB.html.twig');
     }
 
     public function videoAction()

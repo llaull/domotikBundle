@@ -1,4 +1,4 @@
-<div class="col-md-2 ">
+<div class="col-md-2 col-sm-4  col-xs-4 ">
     {#<!-- BEGIN Portlet module -->#}
     <div class="portlet box blue-hoki">
         <div class="portlet-title">
@@ -10,7 +10,7 @@
             <div class="scroller" style="height:100px" data-rail-visible="1"
                  data-rail-color="yellow" data-handle-color="#a1b2bd">
 
-                <div id="colorPicker">
+                <div class="TinyColorConteneur">
                     <a class="color"><div class="colorInner"></div></a>
                     <div class="track"></div>
                     <ul class="dropdown"><li></li></ul>
@@ -18,9 +18,8 @@
                     <input type="hidden" class="modAdresse" value="{{ module.ipv4 }}"/>
                 </div>
 
-
-                {{ module.sonsor_value }}
-                {{ module.unitee_symbole }}
+                {#{{ module.sonsor_value }}#}
+                {#{{ module.unitee_symbole }}#}
 
                 {#{{ dump(module) }}#}
             </div>

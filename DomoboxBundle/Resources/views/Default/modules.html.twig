@@ -13,19 +13,37 @@
 
 {% endblock moreCss %}
 {% block moreJs %}
-
-
     {% javascripts
     '@BackOfficeBundle/Resources/public/assets/global/plugins/tinycolorpicker/jquery.tinycolorpicker.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
-
-
     <script type="text/javascript">
-        $(document).ready(function(){if($("#colorPicker").length){var c=$("#colorPicker");c.tinycolorpicker(),c.bind("change",function(){var c=$(this).find(".colorInput").val(),o=$(this).find(".modAdresse").val(),a='[{"module":"'+o+'"},{"path":"color"},{"color":"'+c+'"}]';$.ajax({data:"data="+a,cache:!1,type:"POST",url:"{{ path ('domotique_module_set_color') }}",success:function(c){}})})}});
+        $(document).ready(function () {
+
+            var $box = $('.TinyColorConteneur');
+            $box.tinycolorpicker();
+
+            $box.bind("change", function () {
+                var selectedValue = $(this).find(".colorInput").val();
+                var moduleID = $(this).find(".modAdresse").val();
+                var dataJson = '[' + '{"module":"' + moduleID + '"},' + '{"path":"color"},' + '{"color":"' + selectedValue + '"}' + ']';
+
+                // ajax
+                $.ajax({
+                    data: 'data=' + dataJson,
+                    cache: false,
+                    type: 'POST',
+                    url: '{{ path ('domotique_module_set_color') }}',
+                    success: function (data) {
+                        console.log(data)
+                    }
+                });
+                //end ajax
+
+            });
+
+        });
     </script>
-
-
 {% endblock moreJs %}
 
 {% set title_page = 'les modules' %}
@@ -38,7 +56,7 @@
            ou qu'on est authentifié
            on affiche le titre "test"
         #}
-        {% if (is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and emplacement.isPublic == true) or is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if (is_granted('IS_AUTHENTICATED_ANONYMOUSLY') and emplacement.public == true) or is_granted('IS_AUTHENTICATED_FULLY') %}
 
             <div class="row">
                 <div class="col-md-12">

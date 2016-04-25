@@ -25,16 +25,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            var $box = $('#colorPicker');
+            var $box = $('.TinyColorConteneur');
             $box.tinycolorpicker();
-            console.log("2");
 
             $box.bind("change", function () {
 
                 var selectedValue = $(this).find(".colorInput").val();
                 var moduleID = $(this).find(".modAdresse").val();
-                console.log(selectedValue);
-                //var dataJson = '{"mac":"5ccf7f02234f","ipv4":"10.0.112.3","iterator":"1","debug txt":"sucess","sensors":[{"sensor Id":"1","sensor type Id":"1","sensor unit Id":"7","sensor value":"1"}]}';
                 var dataJson = '[' + '{"module":"' + moduleID + '"},' + '{"path":"color"},' + '{"color":"' + selectedValue + '"}' + ']';
 
                 // ajax
@@ -70,10 +67,26 @@
     <br>
     <br>
     <br>
-    <div id="colorPicker">
-        <a class="color"><div class="colorInner"></div></a>
+    <div class="TinyColorConteneur">
+        <a class="color">
+            <div class="colorInner"></div>
+        </a>
         <div class="track"></div>
-        <ul class="dropdown"><li></li></ul>
+        <ul class="dropdown">
+            <li></li>
+        </ul>
+        <input type="hidden" class="colorInput"/>
+        <input type="text" class="modAdresse" value="10.0.112.3"/>
+    </div>
+    <br>    <br>
+    <div class="TinyColorConteneur">
+        <a class="color">
+            <div class="colorInner"></div>
+        </a>
+        <div class="track"></div>
+        <ul class="dropdown">
+            <li></li>
+        </ul>
         <input type="hidden" class="colorInput"/>
         <input type="text" class="modAdresse" value="10.0.112.3"/>
     </div>

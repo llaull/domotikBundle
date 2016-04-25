@@ -38,24 +38,23 @@ class Emplacement {
      *
      * @ORM\Column(name="isPublic", type="boolean", nullable=false)
      */
-    private $isPublic;
+    private $public;
 
     /**
      * @return boolean
      */
-    public function isIsPublic()
+    public function isPublic()
     {
-        return $this->isPublic;
+        return $this->public;
     }
 
     /**
-     * @param boolean $isPublic
+     * @param boolean $public
      */
-    public function setIsPublic($isPublic)
+    public function setPublic($public)
     {
-        $this->isPublic = $isPublic;
+        $this->public = $public;
     }
-
 
     public function __toString()
     {

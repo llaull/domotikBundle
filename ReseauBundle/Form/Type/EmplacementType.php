@@ -16,7 +16,7 @@ class EmplacementType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('isPublic')
+            ->add('public')
         ;
     }
     
