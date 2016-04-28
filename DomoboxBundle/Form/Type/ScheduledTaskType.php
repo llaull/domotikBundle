@@ -19,12 +19,12 @@ class ScheduledTaskType extends AbstractType
 //            ->add('created')
             ->add('start', DateTimeType::class, array(
                 'widget' => 'single_text',
-                'format' => 'dd/MM/yy HH:mm ',
+                'format' => 'dd/MM/yy HH:mm',
                 'attr' => ['class' => 'form-control datetime'])
             )
             ->add('stop', DateTimeType::class, array(
                 'widget' => 'single_text',
-                'format' => 'dd/MM/yy HH:mm ',
+                'format' => 'dd/MM/yy HH:mm',
                 'attr' => ['class' => 'daterange-btn'])
             )
             ->add('action')
