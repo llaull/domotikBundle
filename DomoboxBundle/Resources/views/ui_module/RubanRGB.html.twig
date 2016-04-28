@@ -1,3 +1,32 @@
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Modal Title</h4>
+            </div>
+            <div class="modal-body"> Modal body goes here</div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                <button type="button" class="btn green">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="ajax" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="../assets/global/img/loading-spinner-grey.gif" alt="" class="loading">
+                <span> &nbsp;&nbsp;Loading... </span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="col-md-2 col-sm-4  col-xs-4 ">
     {#<!-- BEGIN Portlet module -->#}
     <div class="portlet box blue-hoki">
@@ -5,15 +34,23 @@
             <div class="caption">
                 {#<i class="fa fa-gift"></i>#}
                 {{ module.name }} </div>
+            <div class="tools">
+                <a href="{{ path('domotique_demobox_scheduled_form') }}"
+                   data-target="#ajax" data-toggle="modal" class="config"></a>
+                </div>
         </div>
         <div class="portlet-body">
             <div class="scroller" style="height:100px" data-rail-visible="1"
                  data-rail-color="yellow" data-handle-color="#a1b2bd">
 
                 <div class="TinyColorConteneur">
-                    <a class="color"><div class="colorInner"></div></a>
+                    <a class="color">
+                        <div class="colorInner"></div>
+                    </a>
                     <div class="track"></div>
-                    <ul class="dropdown"><li></li></ul>
+                    <ul class="dropdown">
+                        <li></li>
+                    </ul>
                     <input type="hidden" class="colorInput"/>
                     <input type="hidden" class="modAdresse" value="{{ module.ipv4 }}"/>
                 </div>

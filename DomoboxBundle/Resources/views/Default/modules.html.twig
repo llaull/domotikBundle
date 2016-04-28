@@ -14,9 +14,18 @@
 {% endblock moreCss %}
 {% block moreJs %}
     {% javascripts
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/jquery-ui/jquery-ui.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts
+    '@BackOfficeBundle/Resources/public/assets/pages/scripts/ui-modals.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts
     '@BackOfficeBundle/Resources/public/assets/global/plugins/tinycolorpicker/jquery.tinycolorpicker.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
     <script type="text/javascript">
         $(document).ready(function () {
 

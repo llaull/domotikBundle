@@ -1,0 +1,82 @@
+<html>
+
+<!-- Latest compiled and minified CSS -->
+{% stylesheets
+'@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap/css/bootstrap.min.css'
+output='assets/global/plugins/bootstrap/css/bootstrap.min.css' %}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+{% endstylesheets %}
+
+<!-- Optional theme -->
+{% stylesheets
+'@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap/css/bootstrap.min.css'
+output='assets/global/plugins/bootstrap/css/bootstrap.min.css' %}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+{% endstylesheets %}
+{% stylesheets
+'@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css'
+output='assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css' %}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+{% endstylesheets %}
+
+
+{% javascripts
+'@BackOfficeBundle/Resources/public/assets/global/plugins/jquery.min.js'
+'@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap/js/bootstrap.min.js'
+'@BackOfficeBundle/Resources/public/assets/global/plugins/moment.min.js'
+'@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<body>
+{% form_theme form 'BackOfficeBundle:Default:bootstrap_3_horizontal_layout.html.twig' %}
+
+
+
+{#<!-- BEGIN FORM-->#}
+{{ form_start(form) }}
+<div class="form-body">
+    {{ form_widget(form) }}
+</div>
+<div class="form-actions">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+            <button type="submit" class="btn green">{{ "Save"|trans }}</button>
+            <a class="btn grey-salsa btn-outline"
+               href="{{ path('domotiquebundle_domobox') }}">{{ "Cancel"|trans }}</a>
+        </div>
+    </div>
+</div>
+
+{{ form_end(form) }}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $('#scheduled_task_start').datetimepicker({
+                todayBtn:"true",
+                format:"dd/mm/yy hh:ii",
+                autoclose:"true",
+                pickerPosition:"bottom-left",
+//                startView:"week",
+                minView:"hour",
+                language:"fr"
+            });
+            $('#scheduled_task_stop').datetimepicker({
+                todayBtn:"true",
+                format:"dd/mm/yy hh:ii",
+                autoclose:"true",
+                pickerPosition:"bottom-left",
+//                startView:"day",
+                minView:"hour",
+                language:"fr"
+            });
+
+        });
+    });
+</script>
+
+
+</body>
+</html>

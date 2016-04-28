@@ -9,6 +9,7 @@ use Domotique\ReseauBundle\Entity\Log;
 class InputController extends Controller
 {
 
+
     /**
      * @return JsonResponse
      * $sensorFluxAdd = new \DateTime(rand(-12, 12).' hour');

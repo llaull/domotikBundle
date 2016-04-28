@@ -53,3 +53,7 @@ domotique_module_set_color:
     path:     /domobox/module/set/
     defaults: { _controller: DomotiqueDomoboxBundle:Default:setModuleColor }
     methods:  [POST]
+
+domotique_demobox_scheduled_form:
+    path:     /scheduled/form
+    defaults: { _controller: DomotiqueDomoboxBundle:ScheduledTask:new }

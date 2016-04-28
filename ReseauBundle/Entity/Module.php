@@ -65,9 +65,10 @@ class Module
         $this->modified = new \DateTime();
         $this->created = new \DateTime();
     }
+
     public function __toString()
     {
-        return $this->name;
+        return $this->name . ' (' . $this->location->getName() . ')';
     }
 
     /**
@@ -148,7 +149,7 @@ class Module
     public function setAdressMac($adressMac)
     {
         //retire les : pour stoker les adress MAC
-        $r = str_replace(":","",$adressMac);
+        $r = str_replace(":", "", $adressMac);
         $this->adressMac = $r;
     }
 
