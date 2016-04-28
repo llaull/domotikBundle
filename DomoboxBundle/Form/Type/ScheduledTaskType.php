@@ -30,6 +30,7 @@ class ScheduledTaskType extends AbstractType
             ->add('action')
             ->add('valeur')
             ->add('module')
+            ->add('user')
         ;
     }
 
