@@ -19,6 +19,10 @@ domotiquebundle_domobox_video:
     path:     /domobox/videosurveillance
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:video" }
 
+# ui graphique
+domobox_ui_graphique:
+    path:     /graphique
+    defaults: { _controller: "DomotiqueDomoboxBundle:Default:graph" }
 
 # home
 domotiquebundle_domobox:
@@ -42,10 +46,15 @@ domotique_log_moyen:
     defaults: { _controller: "DomotiqueDomoboxBundle:Output:logMoyenne" }
     methods:  [GET]
 
+
 #retourne l'heure local
 domobox_get_hour:
     path: /flux/hour
     defaults: { _controller: "DomotiqueDomoboxBundle:Output:getCurrentDate" }
+
+domobox_log_graph:
+    path: /log/graph
+    defaults: { _controller: "DomotiqueDomoboxBundle:Output:LogAmCharts" }
 
 #AJAX
 #    set une valeur au controleur qui envera au module

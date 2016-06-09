@@ -31,6 +31,12 @@ class DefaultController extends Controller
 
     }
 
+    public function graphAction()
+    {
+        return $this->render('DomotiqueDomoboxBundle:Default:graphique.html.twig');
+    }
+
+
     public function rgbAction()
     {
         return $this->render('DomotiqueDomoboxBundle:Default:testRGB.html.twig');

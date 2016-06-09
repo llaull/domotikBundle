@@ -8,6 +8,12 @@
         <span class="title">mode module</span>
     </a>
 </li>
+<li {% if app.request.attributes.get('_route') == 'domobox_ui_graphique' %}class="nav-item  active open"{% endif %}>
+    <a href="{{ path('domobox_ui_graphique') }}" class="nav-link {% if app.request.attributes.get('_route') == 'domobox_ui_graphique' %}nav-toggle{% endif %}">
+        <i class="fa fa-industry"></i>
+        <span class="title">mode graphique</span>
+    </a>
+</li>
 
 <li class="heading">
     <h3 class="uppercase">TEST</h3>

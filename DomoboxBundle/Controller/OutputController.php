@@ -17,6 +17,19 @@ use Symfony\Component\HttpFoundation\Request;
 class OutputController extends Controller
 {
 
+    public function LogAmChartsAction(){
+
+        $entities = array("date" => "Fri Jun 03 2016 00:00:00 GMT+0200 (Paris, Madrid (heure d’été))",
+            "value" => 53,
+            "Open" => 3,
+            "Low" => 3,
+            "Close" => 3,
+            "volume" => 3,
+        );
+
+        return new JsonResponse($entities);
+    }
+
     public function logMoyenneAction($unit, $spot)
     {
         $em = $this->getDoctrine()->getEntityManager();
