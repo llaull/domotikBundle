@@ -109,4 +109,33 @@ ORDER BY module_id , sensor_type , sonsor_unit';
         return $results;
     }
 
+    public function getMaxMinValue($em,$type){
+        $rq =
+        "SELECT
+    a.id
+    --,
+   -- a.sonsor_value,
+   -- a.created,
+   -- a.sonsor_unit,
+   -- a.sensor_type,
+   -- a.sonsor_id
+FROM
+    domotique__sensor_log a
+        INNER JOIN
+    (SELECT
+        id, $type(sonsor_value) sonsor_value
+    FROM
+        domotique__sensor_log
+    WHERE
+        sonsor_unit <> 7
+    GROUP BY id) maxiValue ON a.id = maxiValue.id
+GROUP BY HOUR(created) , YEAR(created) , MONTH(created) , DAY(created) , sonsor_unit , sensor_type , sonsor_id";
+
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($rq);
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        return $results;
+    }
 }
