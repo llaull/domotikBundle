@@ -33,10 +33,16 @@ class LogsCleanCommand extends ContainerAwareCommand
         $entitiesMin = $entities->getMaxMinValue($em,'MIN');
         $entitiesMax = $entities->getMaxMinValue($em,'MAX');
 
-        $entities = array_merge( $entitiesMin, $entitiesMax);
+        $entities = array_merge($entitiesMin, $entitiesMax);
 
+        foreach($entities as $v):
+            $donnees[] = $v['id'];
+        endforeach;
 
-        die(var_dump($entities));
+        $rq ="DELETE FROM domotique__sensor_log WHERE id NOT IN ('".join("','", $donnees)."')";
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($rq);
+        var_dump($statement->execute());
 
     }
 }

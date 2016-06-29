@@ -113,7 +113,7 @@ ORDER BY module_id , sensor_type , sonsor_unit';
         $rq =
         "SELECT
     a.id
-    --,
+   -- ,
    -- a.sonsor_value,
    -- a.created,
    -- a.sonsor_unit,
@@ -123,7 +123,7 @@ FROM
     domotique__sensor_log a
         INNER JOIN
     (SELECT
-        id, $type(sonsor_value) sonsor_value
+        id, $type(sonsor_value) AS sonsor_value
     FROM
         domotique__sensor_log
     WHERE
