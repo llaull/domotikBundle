@@ -1,3 +1,17 @@
+{% if entities is empty %}
+    <li>
+        <a href="javascript:;">
+            <span class="time"> {{ "now"|date('d-m-Y H:i:s') }}</span>
+            <span class="details">
+                <span class="label label-sm label-icon label-danger">
+                    <i class="fa fa-ban"></i>
+                </span>
+                aucune donnée
+            </span>
+        </a>
+    </li>
+{% endif %}
+
 {% for moduleNotify in entities %}
 
     {# si le nom du module n'est pas null #}
