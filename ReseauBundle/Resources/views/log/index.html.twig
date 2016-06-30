@@ -22,7 +22,7 @@
         <td>{{ log.module.name }}</td>
         <td>{{ log.sonsorValue }}</td>
         <td>{{ log.sensorId }}</td>
-        <td>
+        {#<td>#}
             {#<ul>#}
                 {#<li>#}
                     {#<a href="{{ path('admin_domotique_log_show', { 'id': log.id }) }}">show</a>#}
@@ -31,7 +31,7 @@
                     {#<a href="{{ path('admin_domotique_log_edit', { 'id': log.id }) }}">edit</a>#}
                 {#</li>#}
             {#</ul>#}
-        </td>
+        {#</td>#}
     </tr>
 {% endfor %}
 {% endblock content_txt %}
