@@ -109,16 +109,12 @@ ORDER BY module_id , sensor_type , sonsor_unit';
         return $results;
     }
 
-    public function getMaxMinValue($em,$type){
+    public function getMaxMinValue($em, $type, $unitOut = 7)
+    {
+        $unitOut = "sonsor_unit NOT IN ($unitOut)";
+
         $rq =
-        "SELECT
-    a.id
-   -- ,
-   -- a.sonsor_value,
-   -- a.created,
-   -- a.sonsor_unit,
-   -- a.sensor_type,
-   -- a.sonsor_id
+        "SELECT a.id
 FROM
     domotique__sensor_log a
         INNER JOIN
@@ -127,9 +123,45 @@ FROM
     FROM
         domotique__sensor_log
     WHERE
-        sonsor_unit <> 7
+        $unitOut
     GROUP BY id) maxiValue ON a.id = maxiValue.id
 GROUP BY HOUR(created) , YEAR(created) , MONTH(created) , DAY(created) , sonsor_unit , sensor_type , sonsor_id";
+
+
+
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($rq);
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        return $results;
+    }
+
+    public function getMoyenneValue($em, $type, $unitOut = 7, $unitIn = 2 )
+    {
+        $unitOut = "sonsor_unit NOT IN ($unitOut)";
+        $unitIn = "sonsor_unit IN ($unitIn)";
+        $rq =
+        "SELECT
+    a.id,
+    a.sonsor_value,
+    a.created,
+    a.sonsor_unit,
+    a.sensor_type,
+    a.sonsor_id
+FROM
+    domotique__sensor_log a
+        INNER JOIN
+    (SELECT
+        id, $type(sonsor_value) AS sonsor_value
+    FROM
+        domotique__sensor_log
+    WHERE
+        $unitOut $unitIn
+    GROUP BY id) maxiValue ON a.id = maxiValue.id
+GROUP BY HOUR(created) , YEAR(created) , MONTH(created) , DAY(created) , sonsor_unit , sensor_type , sonsor_id";
+
+        die(var_dump($rq));
 
         $connection = $em->getConnection();
         $statement = $connection->prepare($rq);

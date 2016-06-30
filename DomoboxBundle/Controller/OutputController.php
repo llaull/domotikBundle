@@ -18,16 +18,67 @@ class OutputController extends Controller
 {
 
     public function LogAmChartsAction(){
+        $em = $this->getDoctrine()->getEntityManager();
+        $rq =
+            "SELECT
+    -- a.id,
+    a.sonsor_value AS value,
+    a.sonsor_value AS volume,
+    a.created AS date
+    -- a.sonsor_unit,
+    -- a.sensor_type,
+    -- a.sonsor_id,
+    -- m.emplacement_id
+FROM
+    domotique__sensor_log AS A
+        INNER JOIN
+    (SELECT
+        id, AVG(sonsor_value) AS sonsor_value
+    FROM
+        domotique__sensor_log
+    WHERE
+        sonsor_unit NOT IN (7)
+            AND sonsor_unit IN (2)
+    GROUP BY id) maxiValue ON A.id = maxiValue.id
+        INNER JOIN
+    domotique__module AS M ON a.module_id = M.id
+GROUP BY YEAR(A.created) , MONTH(A.created) , DAY(A.created) , A.sonsor_unit , A.sensor_type , A.sonsor_id";
 
-        $entities = array("date" => "Fri Jun 03 2016 00:00:00 GMT+0200 (Paris, Madrid (heure d’été))",
-            "value" => 53,
-            "Open" => 3,
-            "Low" => 3,
-            "Close" => 3,
-            "volume" => 3,
-        );
 
-        return new JsonResponse($entities);
+        $connection = $em->getConnection();
+        $statement = $connection->prepare($rq);
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+
+//        /*  $entities = array("date" => "Fri Jun 03 2016 00:00:00 GMT+0200 (Paris, Madrid (heure d’été))",
+//              "value" => 53,
+//              "Open" => 3,
+//              "Low" => 3,
+//              "Close" => 3,
+//              "volume" => 3,
+//          );*/
+//
+//        $date = new \Datetime();
+//        $start = $date->format('d-m-Y ');
+//        // $newDate = $date->add(new DateInterval('PT10H30S'));
+//
+//        for ($i = 0; $i < 100; $i++) {
+//
+//            $visits = rand($i * 5 , 100 );
+//            $hits = rand($i * 9 , 100 );
+//            $views = rand($i * 15 , 100 );
+//
+//            $entities[] = array(
+//                'date' => $start,
+//                'value'=>$visits,
+//                'volume' => $views
+//            );
+//        }
+//
+////        die(var_dump($qqq))
+
+        return new JsonResponse($results);
     }
 
     public function logMoyenneAction($unit, $spot)
