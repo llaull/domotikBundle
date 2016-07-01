@@ -21,13 +21,13 @@ class OutputController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $rq =
             "SELECT
-    -- a.id,
-    a.sonsor_value AS value,
-    a.sonsor_value AS volume,
-    a.created AS date
-    -- a.sonsor_unit,
-    -- a.sensor_type,
-    -- a.sonsor_id,
+    -- A.id,
+    A.sonsor_value AS value,
+    A.sonsor_value AS volume,
+    A.created AS date
+    -- A.sonsor_unit,
+    -- A.sensor_type,
+    -- A.sonsor_id,
     -- m.emplacement_id
 FROM
     domotique__sensor_log AS A
@@ -41,7 +41,7 @@ FROM
             AND sonsor_unit IN (2)
     GROUP BY id) maxiValue ON A.id = maxiValue.id
         INNER JOIN
-    domotique__module AS M ON a.module_id = M.id
+    domotique__module AS M ON A.module_id = M.id
 GROUP BY YEAR(A.created) , MONTH(A.created) , DAY(A.created) , A.sonsor_unit , A.sensor_type , A.sonsor_id";
 
 
