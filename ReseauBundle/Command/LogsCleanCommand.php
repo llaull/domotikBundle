@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Domotique\ReseauBundle\Entity\Log;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LogsCleanCommand extends ContainerAwareCommand
 {
@@ -39,10 +40,11 @@ class LogsCleanCommand extends ContainerAwareCommand
             $donnees[] = $v['id'];
         endforeach;
 
-        $rq ="DELETE FROM domotique__sensor_log WHERE id NOT IN ('".join("','", $donnees)."')";
+        $rq ="DELETE FROM domotique__sensor_log WHERE id NOT IN ('".join('\',\'', $donnees)."')";
         $connection = $em->getConnection();
         $statement = $connection->prepare($rq);
-        var_dump($statement->execute());
+        $return = $statement->execute();
 
+        return new JsonResponse($return);
     }
 }

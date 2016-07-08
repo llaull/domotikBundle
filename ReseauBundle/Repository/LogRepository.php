@@ -137,7 +137,7 @@ GROUP BY HOUR(created) , YEAR(created) , MONTH(created) , DAY(created) , sonsor_
         return $results;
     }
 
-    
+
     public function getMoyenneValue($em,$unitIn)
     {
         $unitIn = "sonsor_unit IN (2,3)";
