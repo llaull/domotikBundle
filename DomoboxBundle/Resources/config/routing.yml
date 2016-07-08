@@ -53,7 +53,7 @@ domobox_get_hour:
 
 domobox_log_graph:
     path: /log/graph/{unit}/
-    defaults: { _controller: "DomotiqueDomoboxBundle:Output:LogAmCharts" }
+    defaults: { _controller: "DomotiqueDomoboxBundle:Output:logAmCharts" }
     methods:  [GET]
 
 #AJAX

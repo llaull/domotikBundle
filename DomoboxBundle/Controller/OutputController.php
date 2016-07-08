@@ -22,7 +22,7 @@ class OutputController extends Controller
      * @param $unit
      * @return JsonResponse
      */
-    public function LogAmChartsAction($unit){
+    public function logAmChartsAction($unit){
 
         $em = $this->getDoctrine()->getEntityManager();
         $entities = $this->getDoctrine()->getRepository('DomotiqueReseauBundle:Log');
