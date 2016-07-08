@@ -137,37 +137,52 @@ GROUP BY HOUR(created) , YEAR(created) , MONTH(created) , DAY(created) , sonsor_
         return $results;
     }
 
-    public function getMoyenneValue($em, $type, $unitOut = 7, $unitIn = 2 )
+    
+    public function getMoyenneValue($em,$unitIn)
     {
-        $unitOut = "sonsor_unit NOT IN ($unitOut)";
-        $unitIn = "sonsor_unit IN ($unitIn)";
+        $unitIn = "sonsor_unit IN (2,3)";
         $rq =
-        "SELECT
-    a.id,
-    a.sonsor_value,
-    a.created,
-    a.sonsor_unit,
-    a.sensor_type,
-    a.sonsor_id
+            "SELECT
+    A.created AS date,
+    A.sonsor_unit as unit,
+    A.sonsor_value
 FROM
-    domotique__sensor_log a
+    domotique__sensor_log AS A
         INNER JOIN
     (SELECT
-        id, $type(sonsor_value) AS sonsor_value
+        id, AVG(sonsor_value) AS sonsor_value
     FROM
         domotique__sensor_log
-    WHERE
-        $unitOut $unitIn
-    GROUP BY id) maxiValue ON a.id = maxiValue.id
-GROUP BY HOUR(created) , YEAR(created) , MONTH(created) , DAY(created) , sonsor_unit , sensor_type , sonsor_id";
-
-        die(var_dump($rq));
+     WHERE
+        $unitIn
+    GROUP BY id) maxiValue ON A.id = maxiValue.id
+        INNER JOIN
+    domotique__module AS M ON A.module_id = M.id
+GROUP BY YEAR(A.created) , MONTH(A.created) , DAY(A.created) , HOUR(A.created), A.sonsor_unit , A.sensor_type , A.sonsor_id";
 
         $connection = $em->getConnection();
         $statement = $connection->prepare($rq);
         $statement->execute();
         $results = $statement->fetchAll();
 
-        return $results;
+        // creation d'un tableau avec la date comme key (evite les doublonb)
+        foreach ($results as $k => $v):
+            if ($v['unit'] == "2"):
+                $unit = 'temp';
+            else:
+                $unit = 'humi';
+            endif;
+
+            $array[$v['date']][$unit]  = $v['sonsor_value'];
+        endforeach;
+
+        // creation d'un tableau final avec les differentes valeurs
+        foreach ($array as $k => $v):
+            $temp = !empty($v['temp']) ? $v['temp'] : NULL;
+            $humi = !empty($v['humi']) ? $v['humi'] : NULL;
+            $newArray[] = array('date' => $k, 'temp' => $temp, 'humi' => $humi);
+        endforeach;
+
+        return $newArray;
     }
 }

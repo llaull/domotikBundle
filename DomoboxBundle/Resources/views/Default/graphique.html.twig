@@ -29,147 +29,6 @@
             createStockChart();
         });
 
-        var chartData = [];
-        chartData.push({ date: new Date(2015, 11, 09, 0, 0, 0, 0), value: 100.00, volume: 1300 });
-        chartData.push({ date: new Date(2015, 11, 10, 0, 0, 0, 0), value: 100.77, volume: 6100 });
-        chartData.push({ date: new Date(2015, 11, 11, 0, 0, 0, 0), value: 99.49, volume: 13300 });
-        chartData.push({ date: new Date(2015, 11, 14, 0, 0, 0, 0), value: 99.61, volume: 60000 });
-        chartData.push({ date: new Date(2015, 11, 15, 0, 0, 0, 0), value: 100.75, volume: 3900 });
-        chartData.push({ date: new Date(2015, 11, 16, 0, 0, 0, 0), value: 102.87, volume: 8300 });
-        chartData.push({ date: new Date(2015, 11, 17, 0, 0, 0, 0), value: 102.63, volume: 985500 });
-        chartData.push({ date: new Date(2015, 11, 18, 0, 0, 0, 0), value: 101.47, volume: 29200 });
-        chartData.push({ date: new Date(2015, 11, 21, 0, 0, 0, 0), value: 101.23, volume: 17000 });
-        chartData.push({ date: new Date(2015, 11, 22, 0, 0, 0, 0), value: 102.15, volume: 24000 });
-        chartData.push({ date: new Date(2015, 11, 23, 0, 0, 0, 0), value: 103.16, volume: 5800 });
-        chartData.push({ date: new Date(2015, 11, 24, 0, 0, 0, 0), value: 103.04, volume: 13400 });
-        chartData.push({ date: new Date(2015, 11, 29, 0, 0, 0, 0), value: 102.58, volume: 22600 });
-        chartData.push({ date: new Date(2015, 11, 30, 0, 0, 0, 0), value: 102.58, volume: 3600 });
-        chartData.push({ date: new Date(2015, 11, 31, 0, 0, 0, 0), value: 100.94, volume: 10300 });
-        chartData.push({ date: new Date(2016, 00, 04, 0, 0, 0, 0), value: 99.64, volume: 17300 });
-        chartData.push({ date: new Date(2016, 00, 05, 0, 0, 0, 0), value: 100.51, volume: 20300 });
-        chartData.push({ date: new Date(2016, 00, 06, 0, 0, 0, 0), value: 99.57, volume: 5600 });
-        chartData.push({ date: new Date(2016, 00, 07, 0, 0, 0, 0), value: 97.78, volume: 12200 });
-        chartData.push({ date: new Date(2016, 00, 08, 0, 0, 0, 0), value: 97.06, volume: 48300 });
-        chartData.push({ date: new Date(2016, 00, 11, 0, 0, 0, 0), value: 97.51, volume: 8400 });
-        chartData.push({ date: new Date(2016, 00, 12, 0, 0, 0, 0), value: 98.38, volume: 32700 });
-        chartData.push({ date: new Date(2016, 00, 13, 0, 0, 0, 0), value: 96.89, volume: 16800 });
-        chartData.push({ date: new Date(2016, 00, 14, 0, 0, 0, 0), value: 98.43, volume: 8400 });
-        chartData.push({ date: new Date(2016, 00, 15, 0, 0, 0, 0), value: 96.91, volume: 10700 });
-        chartData.push({ date: new Date(2016, 00, 18, 0, 0, 0, 0), value: 96.91, volume: 11500 });
-        chartData.push({ date: new Date(2016, 00, 19, 0, 0, 0, 0), value: 97.20, volume: 8100 });
-        chartData.push({ date: new Date(2016, 00, 20, 0, 0, 0, 0), value: 95.32, volume: 30000 });
-        chartData.push({ date: new Date(2016, 00, 21, 0, 0, 0, 0), value: 94.64, volume: 26000 });
-        chartData.push({ date: new Date(2016, 00, 22, 0, 0, 0, 0), value: 96.02, volume: 3000 });
-        chartData.push({ date: new Date(2016, 00, 25, 0, 0, 0, 0), value: 95.44, volume: 7700 });
-        chartData.push({ date: new Date(2016, 00, 26, 0, 0, 0, 0), value: 95.39, volume: 6500 });
-        chartData.push({ date: new Date(2016, 00, 27, 0, 0, 0, 0), value: 94.93, volume: 6300 });
-        chartData.push({ date: new Date(2016, 00, 28, 0, 0, 0, 0), value: 95.20, volume: 3900 });
-        chartData.push({ date: new Date(2016, 00, 29, 0, 0, 0, 0), value: 96.31, volume: 2400 });
-        chartData.push({ date: new Date(2016, 01, 01, 0, 0, 0, 0), value: 96.28, volume: 15000 });
-        chartData.push({ date: new Date(2016, 01, 02, 0, 0, 0, 0), value: 94.88, volume: 7300 });
-        chartData.push({ date: new Date(2016, 01, 03, 0, 0, 0, 0), value: 93.82, volume: 32900 });
-        chartData.push({ date: new Date(2016, 01, 04, 0, 0, 0, 0), value: 93.85, volume: 8200 });
-        chartData.push({ date: new Date(2016, 01, 05, 0, 0, 0, 0), value: 92.88, volume: 3500 });
-        chartData.push({ date: new Date(2016, 01, 08, 0, 0, 0, 0), value: 92.06, volume: 10000 });
-        chartData.push({ date: new Date(2016, 01, 09, 0, 0, 0, 0), value: 91.58, volume: 112200 });
-        chartData.push({ date: new Date(2016, 01, 10, 0, 0, 0, 0), value: 91.46, volume: 14100 });
-        chartData.push({ date: new Date(2016, 01, 11, 0, 0, 0, 0), value: 90.47, volume: 4900 });
-        chartData.push({ date: new Date(2016, 01, 12, 0, 0, 0, 0), value: 91.51, volume: 6700 });
-        chartData.push({ date: new Date(2016, 01, 16, 0, 0, 0, 0), value: 93.36, volume: 17500 });
-        chartData.push({ date: new Date(2016, 01, 17, 0, 0, 0, 0), value: 93.68, volume: 5000 });
-        chartData.push({ date: new Date(2016, 01, 18, 0, 0, 0, 0), value: 93.63, volume: 21600 });
-        chartData.push({ date: new Date(2016, 01, 19, 0, 0, 0, 0), value: 93.68, volume: 4600 });
-        chartData.push({ date: new Date(2016, 01, 22, 0, 0, 0, 0), value: 94.45, volume: 3600 });
-        chartData.push({ date: new Date(2016, 01, 23, 0, 0, 0, 0), value: 93.65, volume: 14400 });
-        chartData.push({ date: new Date(2016, 01, 24, 0, 0, 0, 0), value: 93.24, volume: 25200 });
-        chartData.push({ date: new Date(2016, 01, 25, 0, 0, 0, 0), value: 93.15, volume: 6100 });
-        chartData.push({ date: new Date(2016, 01, 26, 0, 0, 0, 0), value: 93.39, volume: 4000 });
-        chartData.push({ date: new Date(2016, 01, 29, 0, 0, 0, 0), value: 92.54, volume: 4400 });
-        chartData.push({ date: new Date(2016, 02, 01, 0, 0, 0, 0), value: 93.68, volume: 4800 });
-        chartData.push({ date: new Date(2016, 02, 02, 0, 0, 0, 0), value: 94.11, volume: 2000 });
-        chartData.push({ date: new Date(2016, 02, 03, 0, 0, 0, 0), value: 94.74, volume: 2800 });
-        chartData.push({ date: new Date(2016, 02, 04, 0, 0, 0, 0), value: 94.76, volume: 12800 });
-        chartData.push({ date: new Date(2016, 02, 07, 0, 0, 0, 0), value: 94.16, volume: 13400 });
-        chartData.push({ date: new Date(2016, 02, 08, 0, 0, 0, 0), value: 94.50, volume: 3300 });
-        chartData.push({ date: new Date(2016, 02, 09, 0, 0, 0, 0), value: 93.65, volume: 7100 });
-        chartData.push({ date: new Date(2016, 02, 10, 0, 0, 0, 0), value: 94.35, volume: 15800 });
-        chartData.push({ date: new Date(2016, 02, 11, 0, 0, 0, 0), value: 95.34, volume: 11200 });
-        chartData.push({ date: new Date(2016, 02, 14, 0, 0, 0, 0), value: 95.63, volume: 21100 });
-        chartData.push({ date: new Date(2016, 02, 15, 0, 0, 0, 0), value: 95.61, volume: 5700 });
-        chartData.push({ date: new Date(2016, 02, 16, 0, 0, 0, 0), value: 94.91, volume: 4200 });
-        chartData.push({ date: new Date(2016, 02, 17, 0, 0, 0, 0), value: 94.47, volume: 141500 });
-        chartData.push({ date: new Date(2016, 02, 18, 0, 0, 0, 0), value: 94.91, volume: 9200 });
-        chartData.push({ date: new Date(2016, 02, 21, 0, 0, 0, 0), value: 95.25, volume: 4300 });
-        chartData.push({ date: new Date(2016, 02, 22, 0, 0, 0, 0), value: 94.84, volume: 7000 });
-        chartData.push({ date: new Date(2016, 02, 23, 0, 0, 0, 0), value: 95.32, volume: 1300 });
-        chartData.push({ date: new Date(2016, 02, 24, 0, 0, 0, 0), value: 95.08, volume: 21400 });
-        chartData.push({ date: new Date(2016, 02, 28, 0, 0, 0, 0), value: 95.15, volume: 4800 });
-        chartData.push({ date: new Date(2016, 02, 29, 0, 0, 0, 0), value: 95.05, volume: 2800 });
-        chartData.push({ date: new Date(2016, 02, 30, 0, 0, 0, 0), value: 94.91, volume: 4800 });
-        chartData.push({ date: new Date(2016, 02, 31, 0, 0, 0, 0), value: 94.72, volume: 1800 });
-        chartData.push({ date: new Date(2016, 03, 01, 0, 0, 0, 0), value: 94.81, volume: 1900 });
-        chartData.push({ date: new Date(2016, 03, 04, 0, 0, 0, 0), value: 94.67, volume: 1700 });
-        chartData.push({ date: new Date(2016, 03, 05, 0, 0, 0, 0), value: 94.40, volume: 28900 });
-        chartData.push({ date: new Date(2016, 03, 06, 0, 0, 0, 0), value: 94.91, volume: 9600 });
-        chartData.push({ date: new Date(2016, 03, 07, 0, 0, 0, 0), value: 94.06, volume: 2800 });
-        chartData.push({ date: new Date(2016, 03, 08, 0, 0, 0, 0), value: 93.80, volume: 25700 });
-        chartData.push({ date: new Date(2016, 03, 11, 0, 0, 0, 0), value: 93.58, volume: 3500 });
-        chartData.push({ date: new Date(2016, 03, 12, 0, 0, 0, 0), value: 93.15, volume: 7100 });
-        chartData.push({ date: new Date(2016, 03, 13, 0, 0, 0, 0), value: 94.79, volume: 22100 });
-        chartData.push({ date: new Date(2016, 03, 14, 0, 0, 0, 0), value: 95.08, volume: 2300 });
-        chartData.push({ date: new Date(2016, 03, 15, 0, 0, 0, 0), value: 94.96, volume: 5000 });
-        chartData.push({ date: new Date(2016, 03, 18, 0, 0, 0, 0), value: 95.29, volume: 5600 });
-        chartData.push({ date: new Date(2016, 03, 19, 0, 0, 0, 0), value: 95.10, volume: 5700 });
-        chartData.push({ date: new Date(2016, 03, 20, 0, 0, 0, 0), value: 95.25, volume: 1700 });
-        chartData.push({ date: new Date(2016, 03, 21, 0, 0, 0, 0), value: 95.32, volume: 2600 });
-        chartData.push({ date: new Date(2016, 03, 22, 0, 0, 0, 0), value: 94.81, volume: 9100 });
-        chartData.push({ date: new Date(2016, 03, 25, 0, 0, 0, 0), value: 94.55, volume: 3100 });
-        chartData.push({ date: new Date(2016, 03, 26, 0, 0, 0, 0), value: 94.21, volume: 8200 });
-        chartData.push({ date: new Date(2016, 03, 27, 0, 0, 0, 0), value: 94.40, volume: 6200 });
-        chartData.push({ date: new Date(2016, 03, 28, 0, 0, 0, 0), value: 92.91, volume: 4400 });
-        chartData.push({ date: new Date(2016, 03, 29, 0, 0, 0, 0), value: 92.57, volume: 5600 });
-        chartData.push({ date: new Date(2016, 04, 02, 0, 0, 0, 0), value: 93.17, volume: 4700 });
-        chartData.push({ date: new Date(2016, 04, 03, 0, 0, 0, 0), value: 93.44, volume: 4600 });
-        chartData.push({ date: new Date(2016, 04, 04, 0, 0, 0, 0), value: 93.82, volume: 8200 });
-        chartData.push({ date: new Date(2016, 04, 05, 0, 0, 0, 0), value: 93.53, volume: 6600 });
-        chartData.push({ date: new Date(2016, 04, 06, 0, 0, 0, 0), value: 94.21, volume: 1700 });
-        chartData.push({ date: new Date(2016, 04, 09, 0, 0, 0, 0), value: 94.57, volume: 4300 });
-        chartData.push({ date: new Date(2016, 04, 10, 0, 0, 0, 0), value: 95.37, volume: 3700 });
-        chartData.push({ date: new Date(2016, 04, 11, 0, 0, 0, 0), value: 94.28, volume: 6500 });
-        chartData.push({ date: new Date(2016, 04, 12, 0, 0, 0, 0), value: 94.16, volume: 1600 });
-        chartData.push({ date: new Date(2016, 04, 13, 0, 0, 0, 0), value: 93.92, volume: 12500 });
-        chartData.push({ date: new Date(2016, 04, 16, 0, 0, 0, 0), value: 94.72, volume: 1500 });
-        chartData.push({ date: new Date(2016, 04, 17, 0, 0, 0, 0), value: 93.94, volume: 5100 });
-        chartData.push({ date: new Date(2016, 04, 18, 0, 0, 0, 0), value: 94.50, volume: 57100 });
-        chartData.push({ date: new Date(2016, 04, 19, 0, 0, 0, 0), value: 94.72, volume: 3900 });
-        chartData.push({ date: new Date(2016, 04, 20, 0, 0, 0, 0), value: 95.90, volume: 1400 });
-        chartData.push({ date: new Date(2016, 04, 24, 0, 0, 0, 0), value: 96.96, volume: 6300 });
-        chartData.push({ date: new Date(2016, 04, 25, 0, 0, 0, 0), value: 97.08, volume: 7300 });
-        chartData.push({ date: new Date(2016, 04, 26, 0, 0, 0, 0), value: 96.79, volume: 2300 });
-        chartData.push({ date: new Date(2016, 04, 27, 0, 0, 0, 0), value: 97.01, volume: 1200 });
-        chartData.push({ date: new Date(2016, 04, 30, 0, 0, 0, 0), value: 97.68, volume: 14300 });
-        chartData.push({ date: new Date(2016, 04, 31, 0, 0, 0, 0), value: 97.54, volume: 3200 });
-        chartData.push({ date: new Date(2016, 05, 01, 0, 0, 0, 0), value: 97.27, volume: 1600 });
-        chartData.push({ date: new Date(2016, 05, 02, 0, 0, 0, 0), value: 97.73, volume: 8000 });
-        chartData.push({ date: new Date(2016, 05, 03, 0, 0, 0, 0), value: 96.74, volume: 9800 });
-        chartData.push({ date: new Date(2016, 05, 06, 0, 0, 0, 0), value: 96.36, volume: 9700 });
-        chartData.push({ date: new Date(2016, 05, 07, 0, 0, 0, 0), value: 96.33, volume: 3000 });
-        chartData.push({ date: new Date(2016, 05, 08, 0, 0, 0, 0), value: 96.04, volume: 5200 });
-        chartData.push({ date: new Date(2016, 05, 09, 0, 0, 0, 0), value: 95.51, volume: 2000 });
-        chartData.push({ date: new Date(2016, 05, 10, 0, 0, 0, 0), value: 94.21, volume: 2400 });
-        chartData.push({ date: new Date(2016, 05, 13, 0, 0, 0, 0), value: 93.63, volume: 2800 });
-        chartData.push({ date: new Date(2016, 05, 14, 0, 0, 0, 0), value: 93.19, volume: 18400 });
-        chartData.push({ date: new Date(2016, 05, 15, 0, 0, 0, 0), value: 93.12, volume: 188100 });
-        chartData.push({ date: new Date(2016, 05, 16, 0, 0, 0, 0), value: 93.44, volume: 5300 });
-        chartData.push({ date: new Date(2016, 05, 17, 0, 0, 0, 0), value: 92.98, volume: 37300 });
-        chartData.push({ date: new Date(2016, 05, 20, 0, 0, 0, 0), value: 93.70, volume: 5500 });
-        chartData.push({ date: new Date(2016, 05, 21, 0, 0, 0, 0), value: 94.16, volume: 2200 });
-        chartData.push({ date: new Date(2016, 05, 22, 0, 0, 0, 0), value: 94.14, volume: 15700 });
-        chartData.push({ date: new Date(2016, 05, 23, 0, 0, 0, 0), value: 94.96, volume: 7400 });
-        chartData.push({ date: new Date(2016, 05, 24, 0, 0, 0, 0), value: 91.70, volume: 12600 });
-        chartData.push({ date: new Date(2016, 05, 27, 0, 0, 0, 0), value: 90.15, volume: 13800 });
-        chartData.push({ date: new Date(2016, 05, 28, 0, 0, 0, 0), value: 92.08, volume: 4100 });
-        chartData.push({ date: new Date(2016, 05, 29, 0, 0, 0, 0), value: 93.41, volume: 1900 });
 
         var chart;
 
@@ -178,22 +37,20 @@
 
 
             // DATASETS //////////////////////////////////////////
-
             var dataSet = new AmCharts.DataSet();
             chart.dataSets = [{
-                title: "XWD.TO",
+                title: "Salon",
                 color: "#000000",
                 fieldMappings: [ {
-                    fromField: "value",
-                    toField: "value"
+                    fromField: "temp",
+                    toField: "temp"
                 }, {
-                    fromField: "volume",
-                    toField: "volume"
+                    fromField: "humi",
+                    toField: "humi"
                 } ],
-                //dataProvider: chartData,
                 "dataLoader":
                 {
-                    "url": "{{ path('domobox_log_graph') }}",
+                    "url": "{{ path('domobox_log_graph', {'unit': 2}) }}",
                     "showErrors": true,
                     "complete": function(chart)
                     {
@@ -209,22 +66,7 @@
                     }
                 },
                 categoryField: "date"
-            },
-
-               /* {
-                    title: "portfolio-top-9-12-2015",
-                    color: "#FF0000",
-                    fieldMappings: [ {
-                        fromField: "value",
-                        toField: "value"
-                    }, {
-                        fromField: "volume",
-                        toField: "volume"
-                    } ],
-                    dataProvider: chartData2,
-                    categoryField: "date",
-                    compared: true
-                }*/
+            }
                 ];
 
 
@@ -234,14 +76,14 @@
             // first stock panel
             var stockPanel1 = new AmCharts.StockPanel();
             stockPanel1.showCategoryAxis = false;
-            stockPanel1.title = "Price";
-            stockPanel1.percentHeight = 70;
+            stockPanel1.title = "Temperature";
+//            stockPanel1.percentHeight = 70;
 
             // graph of first stock panel
             var graph1 = new AmCharts.StockGraph();
-            graph1.valueField = "value";
+            graph1.valueField = "temp";
             graph1.comparable = true;
-            graph1.compareField = "value";
+            graph1.compareField = "temp";
             graph1.type = "smoothedLine";
             graph1.bullet = "round";
             graph1.lineThickness = 2;
@@ -268,10 +110,10 @@
 
             // second stock panel
             var stockPanel2 = new AmCharts.StockPanel();
-            stockPanel2.title = "Volume";
-            stockPanel2.percentHeight = 30;
+            stockPanel2.title = "humi";
+//            stockPanel2.percentHeight = 30;
             var graph2 = new AmCharts.StockGraph();
-            graph2.valueField = "volume";
+            graph2.valueField = "humi";
             graph2.type = "column";
             graph2.fillAlphas = 1;
             stockPanel2.addStockGraph(graph2);
@@ -304,12 +146,12 @@
             var periodSelector = new AmCharts.PeriodSelector();
             periodSelector.periods = [{
                 period: "DD",
-                count: 10,
-                label: "10 days"
+                count: 1,
+                label: "today",
+                selected: true,
             }, {
                 period: "MM",
                 count: 1,
-                selected: true,
                 label: "1 month"
             }, {
                 period: "YYYY",
@@ -330,33 +172,8 @@
             panelsSettings.usePrefixes = true;
             chart.panelsSettings = panelsSettings;
 
-            /*
-             // EVENTS
-             var e9 = {
-             date: new Date(2011, 6, 25),
-             type: "arrowDown",
-             backgroundColor: "#CC0000",
-             graph: graph1,
-             description: "This is description of an event"
-             };
-             var e10 = {
-             date: new Date(2011, 8, 1),
-             type: "text",
-             graph: graph1,
-             text: "Longer text can\nalso be displayed",
-             description: "This is description of an event"
-             };
-
-
-             */
-
-
-
             chart.write('chartdiv');
         }
-
-
-
 
     });
 </script>
@@ -372,15 +189,10 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-bar-chart font-green-haze"></i>
-                        <span class="caption-subject bold uppercase font-green-haze"> Line & Area</span>
-                        <span class="caption-helper">with changing color</span>
+                        <span class="caption-subject bold uppercase font-green-haze"> Temperature & humidité</span>
                     </div>
                     <div class="tools">
-                        <a href="javascript:;" class="collapse"> </a>
-                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                        <a href="javascript:;" class="reload"> </a>
                         <a href="javascript:;" class="fullscreen"> </a>
-                        <a href="javascript:;" class="remove"> </a>
                     </div>
                 </div>
                 <div class="portlet-body">

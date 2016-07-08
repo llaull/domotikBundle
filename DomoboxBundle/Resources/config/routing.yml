@@ -46,15 +46,15 @@ domotique_log_moyen:
     defaults: { _controller: "DomotiqueDomoboxBundle:Output:logMoyenne" }
     methods:  [GET]
 
-
 #retourne l'heure local
 domobox_get_hour:
     path: /flux/hour
     defaults: { _controller: "DomotiqueDomoboxBundle:Output:getCurrentDate" }
 
 domobox_log_graph:
-    path: /log/graph
+    path: /log/graph/{unit}/
     defaults: { _controller: "DomotiqueDomoboxBundle:Output:LogAmCharts" }
+    methods:  [GET]
 
 #AJAX
 #    set une valeur au controleur qui envera au module
