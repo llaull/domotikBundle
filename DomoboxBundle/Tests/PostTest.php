@@ -39,7 +39,6 @@ class PostTest extends WebTestCase
             array('CONTENT_TYPE' => 'application/json'),
             json_encode(array('data' => $datas))
         );
-
-        $this->assertEquals(500, $client->getResponse()->getStatusCode());
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 }
