@@ -21,10 +21,10 @@ class SensorTypeControllerTest extends WebTestCase
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/domotique/sensor/type/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/domotique/sensor/type/");
-        $crawler = $client->click($crawler->selectLink('Add New')->link());
+        $crawler = $client->click($crawler->selectLink('Ajouter')->link());
 
         // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
+        $form = $crawler->selectButton('Créer')->form(array(
             'sensor_type[name]'  => 'Test',
         ));
 
@@ -35,9 +35,9 @@ class SensorTypeControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('edit')->link());
+        $crawler = $client->click($crawler->selectLink('Editer')->link());
 
-        $form = $crawler->selectButton('Update')->form(array(
+        $form = $crawler->selectButton('Sauvegarder')->form(array(
             'sensor_type[name]'  => 'Foo',
         ));
 

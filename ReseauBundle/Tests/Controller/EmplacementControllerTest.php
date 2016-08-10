@@ -21,11 +21,13 @@ class EmplacementControllerTest extends WebTestCase
 
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/domotique/emplacement/');
+
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/domotique/emplacement/");
-        $crawler = $client->click($crawler->selectLink('Add New')->link());
+//        die(var_dump($client->getResponse()->getContent()));
+        $crawler = $client->click($crawler->selectLink('Ajouter')->link());
 
         // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
+        $form = $crawler->selectButton('Créer')->form(array(
             'emplacement[name]'  => 'Test0001',
         ));
 
@@ -36,15 +38,15 @@ class EmplacementControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('td:contains("Test0001")')->count(), 'Missing element td:contains("Test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('edit')->link());
+        $crawler = $client->click($crawler->selectLink('Editer')->link());
 //
-        $form = $crawler->selectButton('Update')->form(array(
+        $form = $crawler->selectButton('Sauvegarder')->form(array(
             'emplacement[_token]'  => 'Test0001',
         ));
 
         $client->submit($form);
-//        $crawler = $client->click($crawler->selectLink('cancel')->link());
-
+        $crawler = $client->click($crawler->selectLink('Annuler')->link());
+//
 //        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test0001")')->count(), 'Missing element td:contains("Test")');
     }
 

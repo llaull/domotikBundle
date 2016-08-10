@@ -20,10 +20,10 @@ class ModuleControllerTest extends WebTestCase
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/domotique/module/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/domotique/module/");
-        $crawler = $client->click($crawler->selectLink('Add New')->link());
+        $crawler = $client->click($crawler->selectLink('Ajouter')->link());
 
         // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
+        $form = $crawler->selectButton('Créer')->form(array(
             'module[name]'  => 'Module test',
             'module[adressMac]'  => 'FFFFFFFFFFFF',
             'module[adressIpv4]'  => '127.0.0.1'
@@ -33,13 +33,13 @@ class ModuleControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/domotique/module/');
 
         // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Module test")')->count(), 'Missing element td:contains("Module")');
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("Module test")')->count(), 'Missing element td:contains("Module test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('edit')->link());
+        $crawler = $client->click($crawler->selectLink('Editer')->link());
 //
-        $form = $crawler->selectButton('Update')->form(array(
-            'module[name]'  => 'Module Foo',
+        $form = $crawler->selectButton('Sauvegarder')->form(array(
+            'module[name]'  => 'Module testxx',
             'module[adressMac]'  => 'FFFFFFFFFFFF',
             'module[adressIpv4]'  => '127.0.0.1',
         ));
