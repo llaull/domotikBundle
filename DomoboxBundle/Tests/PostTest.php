@@ -6,7 +6,7 @@
  * Time: 17:12
  */
 
-namespace Domotique\bundle\ModuleBundle;
+namespace Domotique\DomoboxBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
