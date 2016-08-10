@@ -60,9 +60,9 @@ domobox_log_graph:
 #    set une valeur au controleur qui envera au module
 domotique_module_set_color:
     path:     /domobox/module/set/
-    defaults: { _controller: DomotiqueDomoboxBundle:Default:setModuleColor }
+    defaults: { _controller: "DomotiqueDomoboxBundle:Default:setModuleColor" }
     methods:  [POST]
 
 domotique_demobox_scheduled_form:
     path:     /scheduled/form
-    defaults: { _controller: DomotiqueDomoboxBundle:ScheduledTask:new }
+    defaults: { _controller: "DomotiqueDomoboxBundle:ScheduledTask:new" }
