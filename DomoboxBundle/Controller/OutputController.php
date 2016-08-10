@@ -24,7 +24,7 @@ class OutputController extends Controller
      */
     public function logAmChartsAction($unit){
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entities = $this->getDoctrine()->getRepository('DomotiqueReseauBundle:Log');
         $results = $entities->getMoyenneValue($em,$unit);
 
@@ -33,7 +33,7 @@ class OutputController extends Controller
 
     public function logMoyenneAction($unit, $spot)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entities = $this->getDoctrine()->getRepository('DomotiqueReseauBundle:Log');
         $entities = $entities->getMoyenHourGroupByModule($em, $unit, $spot);
 
@@ -52,7 +52,7 @@ class OutputController extends Controller
 
     public function getCurrentValueJsonAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entities = $this->getDoctrine()->getRepository('DomotiqueReseauBundle:Log');
         $entities = $entities->getCurrentValue($em);
 
