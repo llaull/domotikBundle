@@ -25,6 +25,10 @@ domobox_ui_graphique:
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:graph" }
 
 # home
+frond_office_homepage:
+    path:     /
+    defaults: { _controller: "DomotiqueDomoboxBundle:Default:index" }
+
 domotiquebundle_domobox:
     path:     /
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:index" }
