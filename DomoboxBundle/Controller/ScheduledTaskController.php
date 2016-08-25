@@ -31,7 +31,7 @@ class ScheduledTaskController extends Controller
 
         }
 
-        return $this->render('DomotiqueDomoboxBundle:ScheduledTask:form.html.twig', array(
+        return $this->render('DomotiqueDomoboxBundle:ScheduledTask:add.html.twig', array(
             'scheduleTask' => $scheduleTask,
             'form' => $form->createView(),
         ));
