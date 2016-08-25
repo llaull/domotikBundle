@@ -19,11 +19,14 @@ class InputController extends Controller
         $em = $this->getDoctrine()->getManager();
         $sensorFluxAdd = new \DateTime();
 
+        $logger = $this->get('logger');
+
         $moduleId = 1;
         $sensorId = 1;
         $sensorTypeId = 8;
-        $sensorUnitId = 1;
-        $sensorValue = rand(20, 25);
+        $sensorUnitId = 7;
+        $sensorValue = 1;
+//        $sensorValue = rand(20, 25);
 
         $log = new Log();
 
@@ -41,7 +44,7 @@ class InputController extends Controller
             $em->persist($log);
             $em->flush();
         } catch (\Doctrine\ORM\EntityNotFoundException $e) {
-            error_log($e->getMessage());
+            $logger->critical($e->getMessage());
             return new JsonResponse(array('requete' => $e->getMessage()));
         }
 

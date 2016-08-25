@@ -8,6 +8,22 @@
     output='assets/global/plugins/tinycolorpicker/tinycolorpicker.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
+    {% stylesheets
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css'
+    output='assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+    {% stylesheets
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css'
+    output='assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+
+    {% stylesheets
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css'
+    output='assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
 
     <!-- END PAGE LEVEL PLUGINS -->
 
@@ -17,8 +33,16 @@
     '@BackOfficeBundle/Resources/public/assets/global/plugins/jquery-ui/jquery-ui.min.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
     {% javascripts
-    '@BackOfficeBundle/Resources/public/assets/pages/scripts/ui-modals.min.js' %}
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/moment.min.js'
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js'
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {% javascripts
@@ -28,6 +52,53 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $(function () {
+                $('form').on('submit', function (e) {
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        beforeSend: function () {
+                            uiNotific('smoke', false, "en cours");
+                        },
+                        success: function (data) {
+                            if (data.query == 'sucess') {
+                                uiNotific('lime', false, data.query);
+                                location.reload();
+                            } else {
+                                uiNotific('tangerine', true, data.query);
+                            }
+                        },
+                        error: function (data) {
+                            uiNotific('tangerine', true, "error", data.query);
+                        }
+                    });
+                    e.preventDefault();
+                });
+            });
+
+            $(function () {
+                $('#scheduled_task_start').datetimepicker({
+                    todayBtn: "true",
+                    format: "dd/mm/yy hh:ii",
+                    autoclose: "true",
+                    pickerPosition: "bottom-left",
+//                startView:"week",
+                    minView: "hour",
+                    language: "fr"
+                });
+                $('#scheduled_task_stop').datetimepicker({
+                    todayBtn: "true",
+                    format: "dd/mm/yy hh:ii",
+                    autoclose: "true",
+                    pickerPosition: "bottom-left",
+//                startView:"day",
+                    minView: "hour",
+                    language: "fr"
+                });
+
+            });
 
             var $box = $('.TinyColorConteneur');
             $box.tinycolorpicker();
@@ -85,13 +156,13 @@
                         </div>
                         <div class="portlet-body">
                             <div class="row">
-                            {% for module in modules %}
-                                {% if  emplacement.name == module.emplacement %}
+                                {% for module in modules %}
+                                    {% if  emplacement.name == module.emplacement %}
 
-                                    {% include 'DomotiqueDomoboxBundle:ui_module:' ~ module.nom_sonde ~ '.html.twig' with {'foo': 'bar'} %}
+                                        {% include 'DomotiqueDomoboxBundle:ui_module:' ~ module.nom_sonde ~ '.html.twig' with {'foo': 'bar'} %}
 
-                                {% endif %}
-                            {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

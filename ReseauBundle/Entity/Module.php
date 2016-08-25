@@ -68,7 +68,8 @@ class Module
 
     public function __toString()
     {
-        return $this->name . ' (' . $this->location->getName() . ')';
+        return "d";
+       // return $this->name . ' (' . $this->location->getName() . ')';
     }
 
     /**

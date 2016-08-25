@@ -1,0 +1,26 @@
+{% form_theme form 'BackOfficeBundle:Default:bootstrap_3_horizontal_layout.html.twig' %}
+
+<!-- responsive -->
+<div id="responsive" class="modal fade" tabindex="-1" data-width="760">
+    {{ form_start(form,{'attr': {'id': 'FormAjax', 'action': path('domotique_demobox_scheduled_form') }}) }}
+    <div class="modal-header">
+        <a href="#" class="float-right" data-placement="left" title="close" data-dismiss="modal">
+            <i class="glyph-icon icon-remove"></i>
+        </a>
+    </div>
+
+    <div class="modal-body">
+
+        {{ form_widget(form) }}
+
+
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Submit" name="submitActionInt1"
+               class="btn medium primary-bg"/>
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="center btn medium primary-bg">Close
+        </button>
+    </div>
+    {{ form_end(form) }}
+
+</div>

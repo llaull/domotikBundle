@@ -20,7 +20,7 @@ class DefaultController extends Controller
         $emplacements = $em->getRepository('DomotiqueReseauBundle:Emplacement')->findBy(array(), array('name' => 'ASC'));
 
         //
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $modules = $this->getDoctrine()->getRepository('DomotiqueReseauBundle:Log');
         $modules = $modules->getCurrentValue($em);
 
@@ -33,8 +33,6 @@ class DefaultController extends Controller
 
     public function graphAction()
     {
-;
-
         return $this->render('DomotiqueDomoboxBundle:Default:graphique.html.twig');
     }
 

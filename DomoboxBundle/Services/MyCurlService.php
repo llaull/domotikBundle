@@ -10,7 +10,7 @@ class MyCurlService
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $restUrl);
-        curl_setopt($ch, CURLOPT_HEADER, true);
+        //curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
