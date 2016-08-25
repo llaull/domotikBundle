@@ -6,11 +6,14 @@ namespace Domotique\DomoboxBundle\Services;
 class MyCurlService
 {
 
+    /*
+     * pour debuger utiliser :
+     * curl_setopt($ch, CURLOPT_HEADER, true);
+     */
     public function getToUrl($restUrl)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $restUrl);
-        //curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
@@ -23,7 +26,7 @@ class MyCurlService
         return $response;
     }
 
-    function downloadImage($image_url, $image_file)
+    public function downloadImage($image_url, $image_file)
     {
         $fp = fopen($image_file, 'w+');              // open file handle
 

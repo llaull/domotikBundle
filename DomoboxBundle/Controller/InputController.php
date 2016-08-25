@@ -26,7 +26,6 @@ class InputController extends Controller
         $sensorTypeId = 8;
         $sensorUnitId = 7;
         $sensorValue = 1;
-//        $sensorValue = rand(20, 25);
 
         $log = new Log();
 
