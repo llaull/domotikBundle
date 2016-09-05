@@ -35,13 +35,13 @@ class Module
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
     /**
      * @var string
      *
-     * @ORM\Column(name="mac", type="string", length=17, unique=true, nullable=false)
+     * @ORM\Column(name="mac", type="string", length=17, unique=true, nullable=true)
      */
     private $adressMac;
     /**
@@ -68,7 +68,7 @@ class Module
 
     public function __toString()
     {
-        return $this->name . ' (' . $this->location->getName() . ')';
+        return $this->name;
     }
 
     /**

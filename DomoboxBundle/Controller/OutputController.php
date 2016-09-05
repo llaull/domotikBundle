@@ -40,6 +40,10 @@ class OutputController extends Controller
         return new JsonResponse($entities);
     }
 
+    /**
+     * donne la date et heure courrante
+     * @return JsonResponse
+     */
     public function getCurrentDateAction()
     {
         $now = new \DateTime();
@@ -50,6 +54,11 @@ class OutputController extends Controller
         return new JsonResponse($return);
     }
 
+    /**
+     *
+     * donne les values des modules dans l'heure
+     * @return JsonResponse
+     */
     public function getCurrentValueJsonAction()
     {
         $em = $this->getDoctrine()->getManager();

@@ -44,9 +44,7 @@ class ModuleControllerTest extends WebTestCase
             'module[adressIpv4]'  => '127.0.0.1',
         ));
         $client->submit($form);
-//        $crawler = $client->request('GET', '/admin/domotique/module/');
 //
-//        $this->assertGreaterThan(0, $crawler->filter('td:contains("Module Foo")')->count(), 'Missing element td:contains("Module foo")');
     }
 
 

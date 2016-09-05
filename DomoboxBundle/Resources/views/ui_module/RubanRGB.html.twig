@@ -36,3 +36,21 @@
 </div>
 
 {{ render(controller('DomotiqueDomoboxBundle:ScheduledTask:new')) }}
+
+{% javascripts
+'@BackOfficeBundle/Resources/public/assets/global/plugins/jquery.min.js'
+'@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap/js/bootstrap.min.js'
+'@BackOfficeBundle/Resources/public/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+//        change le select avec le module selectionner
+        $(function () {
+            $('#scheduled_task_module option[value="{{ module.module_ID }}"]').prop('selected', true);
+        });
+    });
+</script>

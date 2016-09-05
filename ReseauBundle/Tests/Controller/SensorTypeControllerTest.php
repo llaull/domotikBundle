@@ -25,26 +25,25 @@ class SensorTypeControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Créer')->form(array(
-            'sensor_type[name]'  => 'Test',
+            'sensor_type[name]'  => 'sensorTypeName',
         ));
 
         $client->submit($form);
         $crawler = $client->followRedirect();
 
         // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("sensorTypeName")')->count(), 'Missing element td:contains("sensorTypeName")');
 
         // Edit the entity
         $crawler = $client->click($crawler->selectLink('Editer')->link());
 
         $form = $crawler->selectButton('Sauvegarder')->form(array(
-            'sensor_type[name]'  => 'Foo',
+            'sensor_type[name]'  => 'sensorTypeNameBis',
         ));
 
         $client->submit($form);
-//        $crawler = $client->click($crawler->selectLink('Cancel')->link());
-
-//        $this->assertGreaterThan(0, $crawler->filter('td:contains("Foo")')->count(), 'Missing element td:contains("Test")');
+        $crawler = $client->request('GET', '/admin/domotique/sensor/type/');
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("sensorTypeNameBis")')->count(), 'Missing element td:contains("sensorTypeNameBis")');
     }
 
 }

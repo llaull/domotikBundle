@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 
+    {% stylesheets
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/jquery-minicolors/jquery.minicolors.css'
+    output='assets/global/plugins/jquery-minicolors/jquery.minicolors.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
     <!-- END PAGE LEVEL PLUGINS -->
 
 {% endblock moreCss %}
@@ -50,6 +55,18 @@
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
+    {% javascripts
+    '@BackOfficeBundle/Resources/public/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts
+    '@BackOfficeBundle/Resources/public/assets/pages/scripts/components-color-pickers.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -59,6 +76,7 @@
                         type: 'POST',
                         url: $(this).attr('action'),
                         data: $(this).serialize(),
+                        dataType: 'json',
                         beforeSend: function () {
                             uiNotific('smoke', false, "en cours");
                         },

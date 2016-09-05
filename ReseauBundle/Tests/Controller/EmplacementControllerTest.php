@@ -23,7 +23,7 @@ class EmplacementControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/domotique/emplacement/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/domotique/emplacement/");
-//        die(var_dump($client->getResponse()->getContent()));
+
         $crawler = $client->click($crawler->selectLink('Ajouter')->link());
 
         // Fill in the form and submit it
@@ -46,8 +46,6 @@ class EmplacementControllerTest extends WebTestCase
 
         $client->submit($form);
         $crawler = $client->click($crawler->selectLink('Annuler')->link());
-//
-//        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test0001")')->count(), 'Missing element td:contains("Test")');
     }
 
 }

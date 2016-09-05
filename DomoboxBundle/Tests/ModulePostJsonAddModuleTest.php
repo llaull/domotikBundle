@@ -11,7 +11,7 @@ namespace Domotique\DomoboxBundle\Tests;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 
-class PostTest extends WebTestCase
+class ModulePostJsonAddModuleTest extends WebTestCase
 {
 
     public function testIndex()

@@ -67,7 +67,7 @@ domotique_module_set_color:
     defaults: { _controller: "DomotiqueDomoboxBundle:Default:setModuleColor" }
     methods:  [POST]
 
-domotique_demobox_scheduled_form:
-    path:     /scheduled/form
+domotique_demobox_scheduled_add:
+    path:     /scheduled/new/
     defaults: { _controller: "DomotiqueDomoboxBundle:ScheduledTask:new" }
     methods:  [GET,POST]

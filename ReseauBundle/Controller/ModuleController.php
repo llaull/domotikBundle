@@ -43,6 +43,8 @@ class ModuleController extends Controller
             $em->persist($module);
             $em->flush();
 
+            $this->get('ras_flash_alert.alert_reporter')->addSuccess("Category added");
+
             return $this->redirectToRoute('admin_domotique_module_index');
         }
 
@@ -95,9 +97,29 @@ class ModuleController extends Controller
      * Deletes a Module entity.
      *
      */
-    public function deleteAction(Request $request, Module $module)
+    public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($module);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('DomotiqueReseauBundle:Module')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Texte entity.');
+        }
+
+        try {
+            $em->remove($entity);
+            $em->flush();
+            $this->get('ras_flash_alert.alert_reporter')->addSuccess("Suppression réalisé avec succèss");
+        } catch (\PDOException $e) {
+            $this->get('ras_flash_alert.alert_reporter')->addError("Suppression impossible : des articles utilise cette categorie");
+        }
+
+
+        return $this->redirect($this->generateUrl('admin_domotique_module_index'));
+
+        /*$form = $this->createDeleteForm($module);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -107,6 +129,7 @@ class ModuleController extends Controller
         }
 
         return $this->redirectToRoute('admin_domotique_module_index');
+        */
     }
 
     /**

@@ -64,7 +64,7 @@ class LogRepository extends EntityRepository
     {
         $rq = 'SELECT
     l.id,
-    l.module_id,
+    l.module_id AS module_ID,
     l.created AS date,
     l.sonsor_unit,
     l.sensor_type,
@@ -84,7 +84,7 @@ FROM
     WHERE
          created > CURDATE()
         AND sensor_type <> 1
-        -- AND created > SUBTIME(NOW(),"02:00:00")
+        AND created > SUBTIME(NOW(),"01:00:00")
       -- AND DATE_SUB(CURTIME(),INTERVAL 1 HOUR) >= created
     GROUP BY module_id , sonsor_unit , sensor_type) AS b ON b.module_id = l.module_id
         AND b.sonsor_unit = l.sonsor_unit

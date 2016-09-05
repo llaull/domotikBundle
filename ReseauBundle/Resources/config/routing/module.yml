@@ -21,4 +21,4 @@ admin_domotique_module_edit:
 admin_domotique_module_delete:
     path:     /{id}/delete
     defaults: { _controller: "DomotiqueReseauBundle:Module:delete" }
-    methods:  DELETE
+    methods:  [POST, GET, DELETE]
